@@ -1,0 +1,625 @@
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  directUrl         = env("DIRECT_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Roles enum for stronger typing and guards
+enum Role {
+  client
+  artist
+  admin
+}
+
+enum LeadStatus {
+  new
+  contacted
+  qualified
+  proposal
+  won
+  lost
+}
+
+enum OrderStatus {
+  paid
+  refunded
+  disputed
+  failed
+}
+
+enum FulfillmentStatus {
+  pending_shipment
+  shipped
+}
+
+enum OrderOpsStatus {
+  backoffice_pending
+  awaiting_payment
+  to_ship
+  processing
+  completed
+  blocked
+}
+
+enum WorkflowEntityType {
+  lead
+  order
+}
+
+enum WorkflowActivityType {
+  note
+  status
+  follow_up
+  follow_up_complete
+  export
+}
+
+enum ArtworkStatus {
+  available
+  sold
+  archived
+}
+
+// ==============
+//   MODELS
+// ==============
+
+// User gère l'authentification et le rôle (client, artiste, admin)
+model User {
+  id                       String                @id @default(uuid())
+  email                    String                @unique
+  password                 String
+  name                     String?
+  role                     Role
+  isActive                 Boolean               @default(false)
+  activationToken          String?               @unique
+  activationTokenExpiresAt DateTime?
+  // Password reset
+  resetToken               String?               @unique
+  resetTokenExpiresAt      DateTime?
+  artist                   Artist? // Relation one-to-one vers Artist
+  createdAt                DateTime              @default(now())
+  updatedAt                DateTime              @updatedAt
+  profileCustomization     ProfileCustomization?
+  artistPages              ArtistPage[]
+  mediaFiles               MediaLibrary[] // Files uploaded by this user
+  Comment                  Comment[]
+  Like                     Like[]
+  Wishlist                 Wishlist[]
+  Follower                 Follower[]
+  AgentConversation        AgentConversation[]
+  orders                   Order[]
+  artAlerts                ArtAlert[] // Alertes personnalisées
+
+  @@index([role])
+}
+
+model MediaLibrary {
+  id        String   @id @default(uuid())
+  userId    String
+  fileUrl   String
+  fileType  String
+  altText   String?
+  width     Int?
+  height    Int?
+  sizeKb    Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user     User      @relation(fields: [userId], references: [id])
+  artists  Artist[] // Profil images using this media
+  artworks Artwork[] // Artworks using this media (future)
+
+  @@index([userId])
+}
+
+model ProfileCustomization {
+  id               String    @id @default(uuid())
+  userId           String    @unique
+  // Ancien champ: contenu unique. Conservé pour rétrocompat (sera utilisé comme draft si présent)
+  content          Json? // Stocke la configuration du profil (legacy)
+  // Nouveau: séparation brouillon/publication
+  draftContent     Json?
+  publishedContent Json?
+  status           String? // 'draft' | 'published'
+  publishedAt      DateTime?
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+// Nouveau modèle: pages de personnalisation multiples par artiste/utilisateur
+// Permet d'éditer différentes pages (ex: "profile", "poster", "banner") avec brouillon/publication
+model ArtistPage {
+  id               String    @id @default(uuid())
+  userId           String
+  key              String // ex: 'profile' | 'poster' | 'banner'
+  draftContent     Json?
+  publishedContent Json?
+  status           String? // 'draft' | 'published'
+  publishedAt      DateTime?
+  desktopLayout    Json?
+  mobileLayout     Json?
+  globalStyles     Json?
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, key])
+  @@index([userId])
+  @@index([key])
+  @@index([status])
+  @@index([publishedAt])
+}
+
+// Artist stocke la biographie, la photo, et la liste d’œuvres
+model Artist {
+  id             String        @id @default(uuid())
+  slug           String?       @unique
+  isActive       Boolean       @default(true)
+  isFeatured     Boolean       @default(false)
+  name           String
+  biography      String?
+  photoUrl       String?
+  // Relation vers la médiathèque pour l'image de profil
+  profileImageId String?
+  profileImage   MediaLibrary? @relation(fields: [profileImageId], references: [id])
+
+  location                   String?
+  phone                      String?
+  portfolio                  String?
+  instagramUrl               String?
+  facebookUrl                String?
+  artStyle                   String?
+  // Toggles boutique
+  enableCommerce             Boolean @default(true)
+  enableLeads                Boolean @default(true)
+  // Réglages e‑commerce
+  contactEmail               String?
+  allowInternationalShipping Boolean @default(false)
+  defaultShippingFee         Int?
+  processingTimeDays         Int?
+  // Message affiché sur la boutique (ex: "Expédié sous 3 à 5 jours")
+  deliveryBannerMessage      String?
+  notificationPreferences    Json?
+
+  // Nouveaux liens sociaux JSON (remplace ou complète les champs individuels)
+  socialLinks Json?
+
+  // New Banner System
+  bannerLayout     String?
+  bannerPalette    Json?
+  bannerAesthetic  String?
+  bannerCaption    String?
+  bannerTextureUrl String?
+  bannerPreset     String?
+
+  // Phase 1: Advanced Customization
+  bannerBackgroundImage String?
+  bannerOverlayOpacity  Float?
+  bannerCtaText         String?
+  bannerCtaUrl          String?
+  bannerCtaStyle        String?
+
+  stripeAccountId String?  @unique
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relation avec User en one-to-one
+  userId String? @unique
+  user   User?   @relation(fields: [userId], references: [id])
+
+  // Relation : un artiste possède plusieurs œuvres
+  artworks         Artwork[]
+  sales            Order[]
+  bannerCtaMetrics BannerCtaMetric[]
+  Follower         Follower[]
+
+  @@index([createdAt])
+  @@index([isActive])
+  @@index([isFeatured])
+  @@index([artStyle])
+}
+
+// Artwork représente une œuvre d'art (tableau, sculpture, etc.)
+// On la relie à un artiste via la clé étrangère artistId
+model Artwork {
+  id            String   @id @default(uuid())
+  title         String
+  imageUrl      String
+  price         Int
+  stockQuantity Int?     @default(1)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relation existante
+  artistId String
+  artist   Artist @relation(fields: [artistId], references: [id])
+
+  // Nouveau champ pour stocker le nom de l'artiste
+  artistName String?
+
+  // Link to MediaLibrary (New)
+  mediaLibraryId String?
+  mediaLibrary   MediaLibrary? @relation(fields: [mediaLibraryId], references: [id])
+
+  // Nouveaux champs de transparence
+  condition     String? // Ex: "Neuf", "Bon état"
+  medium        String? // Ex: "Huile sur toile", "Marbre" (Added per V2 Spec)
+  dimensions    Json? // Ex: { height: 100, width: 80, unit: 'cm' }
+  provenance    String? // Ex: "Atelier de l'artiste"
+  certificate   Boolean   @default(true)
+  year          Int?
+  categoryId    String?
+  category      Category? @relation(fields: [categoryId], references: [id])
+  description   String?
+  // Disponibilité pour la vente
+  status        ArtworkStatus @default(available)
+  // Réservation souple pour éviter les doubles ventes pendant le checkout
+  reservedUntil DateTime?
+
+  // === Nouvelle taxonomie enrichie ===
+  style        String[] // ['abstract', 'figurative', 'minimalist', 'expressionist', 'surrealist']
+  mood         String[] // ['serene', 'energetic', 'contemplative', 'joyful', 'melancholic']
+  colors       String[] // Palette dominante extraite (ex: ['#1d3b62', '#f0b429'])
+  tags         String[] // Tags libres pour recherche
+
+  // === Dimensions structurées ===
+  widthCm      Float?
+  heightCm     Float?
+  depthCm      Float?
+  orientation  String? // 'portrait' | 'landscape' | 'square'
+
+  // === Métadonnées boutique ===
+  isFramed     Boolean @default(false)
+  isOriginal   Boolean @default(true)
+  isSigned     Boolean @default(true)
+
+  reservations Reservation[]
+  orders       Order[]
+
+  variants Variant[]
+  Comment  Comment[]
+  Like     Like[]
+  Wishlist Wishlist[]
+
+  @@index([artistId])
+  @@index([categoryId])
+  @@index([createdAt])
+  @@index([reservedUntil])
+  @@index([status, price])
+  @@index([categoryId, status])
+  @@index([title], map: "artwork_title_idx")
+  @@index([status, style])
+  @@index([orientation])
+}
+
+// Social Models
+model Comment {
+  id        String   @id @default(uuid())
+  userId    String
+  artworkId String
+  content   String
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id])
+  artwork Artwork @relation(fields: [artworkId], references: [id])
+
+  @@index([artworkId])
+}
+
+model Like {
+  userId    String
+  artworkId String
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id])
+  artwork Artwork @relation(fields: [artworkId], references: [id])
+
+  @@id([userId, artworkId])
+}
+
+model Wishlist {
+  userId    String
+  artworkId String
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id])
+  artwork Artwork @relation(fields: [artworkId], references: [id])
+
+  @@id([userId, artworkId])
+}
+
+model Follower {
+  userId    String
+  artistId  String
+  createdAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id])
+  artist Artist @relation(fields: [artistId], references: [id])
+
+  @@id([userId, artistId])
+}
+
+model BannerCtaMetric {
+  id        String   @id @default(uuid())
+  artistId  String
+  ctaKey    String
+  ctaLabel  String?
+  ctaHref   String
+  placement String?
+  presetId  String?
+  source    String?
+  date      DateTime @default(now())
+  clicks    Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  artist Artist @relation(fields: [artistId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([artistId, ctaKey, date])
+  @@index([artistId, date])
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  date        DateTime
+  location    String?
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([date])
+}
+
+model BlogPost {
+  id          String    @id @default(uuid())
+  title       String
+  content     String
+  excerpt     String?
+  publishedAt DateTime?
+  imageUrl    String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([publishedAt])
+  @@index([createdAt])
+}
+
+model Category {
+  id       String     @id @default(uuid())
+  name     String     @unique
+  parentId String?
+  parent   Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children Category[] @relation("CategoryHierarchy")
+  artworks Artwork[]
+}
+
+// Lead d'achat: permet de capter des demandes d'achat/réservation sans paiement en ligne
+model Lead {
+  id               String     @id @default(uuid())
+  name             String
+  email            String
+  phone            String?
+  message          String?
+  artworkId        String?
+  artistId         String?
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  status           LeadStatus @default(new)
+  lastContactedAt  DateTime?
+  nextFollowUpAt   DateTime?
+  nextFollowUpNote String?
+
+  // Pas de contraintes strictes ici pour garder le MVP simple
+}
+
+// Commandes payées via Stripe Checkout
+model Order {
+  id         String  @id @default(uuid())
+  artworkId  String
+  artwork    Artwork @relation(fields: [artworkId], references: [id])
+  variantId  String?
+  artistId   String
+  artist     Artist  @relation(fields: [artistId], references: [id])
+  buyerEmail String?
+  buyerName  String?
+  buyerPhone String?
+  
+  // Link to Buyer User (Optional for guest checkout, but populated if logged in)
+  userId     String?
+  user       User?   @relation(fields: [userId], references: [id])
+
+  amount     Int // en centimes
+  currency   String // ex: 'eur'
+  fee        Int // commission plateforme en centimes
+
+  // New: explicit commission field if different from fee (optional migration step)
+  commissionAmount Int? @default(0) // en centimes
+
+  net                 Int // montant net pour l'artiste en centimes (hors Connect pour l'instant)
+  tax                 Int               @default(0)
+  shipping            Int               @default(0)
+  stripeSessionId     String            @unique
+  stripeTransactionId String? // ID de transaction stripe (pi_...)         @unique
+  paymentIntentId     String?
+  status              OrderStatus
+  fulfillmentStatus   FulfillmentStatus @default(pending_shipment)
+  fulfilledAt         DateTime?
+  billingAddress      Json?
+  shippingAddress     Json?
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  opsStatus           OrderOpsStatus    @default(backoffice_pending)
+  nextActionAt        DateTime?
+  nextActionNote      String?
+
+  @@index([artistId])
+  @@index([artworkId])
+  @@index([variantId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([fulfillmentStatus])
+  @@index([opsStatus])
+  @@index([nextActionAt])
+}
+
+model WorkflowActivity {
+  id           String               @id @default(uuid())
+  entityType   WorkflowEntityType
+  entityId     String
+  activityType WorkflowActivityType
+  payload      Json?
+  dueAt        DateTime?
+  completedAt  DateTime?
+  createdAt    DateTime             @default(now())
+  authorId     String?
+  authorEmail  String?
+  authorName   String?
+
+  @@index([entityType, entityId, createdAt])
+  @@index([entityType, dueAt])
+}
+
+model Reservation {
+  id              String   @id @default(uuid())
+  artworkId       String
+  variantId       String?
+  artwork         Artwork  @relation(fields: [artworkId], references: [id], onDelete: Cascade)
+  variant         Variant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+  quantity        Int      @default(1)
+  stripeSessionId String?  @unique
+  status          String   @default("active") // active | consumed | expired | canceled
+  expiresAt       DateTime
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([artworkId])
+  @@index([variantId])
+  @@index([expiresAt])
+}
+
+model WebhookEvent {
+  id         String   @id @default(uuid())
+  provider   String
+  type       String
+  payload    Json
+  eventId    String?
+  receivedAt DateTime @default(now())
+
+  @@unique([provider, eventId])
+  @@index([provider])
+  @@index([type])
+  @@index([receivedAt])
+}
+
+model AdminExportJob {
+  id                  String    @id @default(uuid())
+  type                String
+  status              String    @default("pending") // pending | processing | ready | error
+  filters             Json?
+  fileName            String?
+  fileMimeType        String?
+  fileSize            Int?
+  fileChecksum        String?
+  fileStorageProvider String?
+  fileStorageKey      String?
+  fileStorageUrl      String?
+  errorMessage        String?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  readyAt             DateTime?
+  triggeredById       String?
+  triggeredByEmail    String?
+
+  @@index([type])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Variant {
+  id            String        @id @default(uuid())
+  artworkId     String
+  artwork       Artwork       @relation(fields: [artworkId], references: [id], onDelete: Cascade)
+  name          String
+  priceOverride Int?
+  stockQuantity Int?          @default(1)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  reservations  Reservation[]
+
+  @@index([artworkId])
+}
+
+model AdminAuditLog {
+  id         String   @id @default(uuid())
+  actorId    String?
+  actorEmail String?
+  action     String
+  resource   String?
+  ipAddress  String?
+  userAgent  String?
+  metadata   Json?
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([action])
+  @@index([actorId])
+}
+
+// AI Agent Models
+model AgentConversation {
+  id        String   @id @default(uuid())
+  userId    String
+  title     String?
+  updatedAt DateTime @updatedAt
+
+  user     User           @relation(fields: [userId], references: [id])
+  messages AgentMessage[]
+}
+
+model AgentMessage {
+  id             String   @id @default(uuid())
+  conversationId String
+  role           String // 'user' | 'assistant'
+  content        Json
+  createdAt      DateTime @default(now())
+
+  conversation AgentConversation @relation(fields: [conversationId], references: [id])
+}
+
+// Alertes personnalisées pour les nouvelles œuvres
+model ArtAlert {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Critères de l'alerte
+  artistIds    String[]
+  categoryIds  String[]
+  styles       String[]
+  mediums      String[]
+  priceMin     Int?
+  priceMax     Int?
+
+  // Préférences de notification
+  emailEnabled Boolean  @default(true)
+  pushEnabled  Boolean  @default(false)
+  frequency    String   @default("immediate") // 'immediate' | 'daily' | 'weekly'
+
+  isActive        Boolean   @default(true)
+  lastTriggeredAt DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([isActive])
+}

@@ -1,0 +1,6 @@
+export { default as SectionTitle } from './SectionTitle'
+export { default as SubTitle } from './SubTitle'
+export { default as BodyText } from './BodyText'
+export type { SectionTitleProps } from './SectionTitle'
+export type { SubTitleProps } from './SubTitle'
+export type { BodyTextProps } from './BodyText'

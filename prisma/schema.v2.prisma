@@ -1,0 +1,275 @@
+// Draft v2 schema (not applied): aligns with ERD-v2
+// Use this as target; migrations/backfills will map from current schema.
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role { client artist admin }
+
+enum ReservationStatus { active consumed expired canceled }
+
+enum OrderStatus { paid refunded disputed failed }
+
+enum FulfillmentStatus { pending_shipment shipped }
+
+enum PublishStatus { draft published }
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      Role
+  isActive  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  artist    Artist?
+  pages     ArtistPage[]
+  customization ProfileCustomization?
+}
+
+model Artist {
+  id          String   @id @default(uuid())
+  userId      String?  @unique
+  user        User?    @relation(fields: [userId], references: [id])
+  slug        String   @unique
+  name        String
+  biography   String?
+  photoUrl    String?
+  instagramUrl String?
+  facebookUrl  String?
+  portfolio    String?
+  enableCommerce Boolean @default(true)
+  allowInternationalShipping Boolean @default(false)
+  defaultShippingFee Int?
+  processingTimeDays Int?
+  deliveryBannerMessage String?
+  stripeAccountId String? @unique
+  isActive    Boolean @default(true)
+  isFeatured  Boolean @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  artworks Artwork[]
+  bannerCtaMetrics BannerCtaMetric[]
+
+  @@index([isActive])
+  @@index([isFeatured])
+}
+
+model Category {
+  id       String    @id @default(uuid())
+  slug     String    @unique
+  name     String    @unique
+  parentId String?
+  parent   Category? @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children Category[] @relation("CategoryHierarchy")
+  artworks Artwork[]
+}
+
+model Artwork {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  artistId    String
+  artist      Artist   @relation(fields: [artistId], references: [id])
+  categoryId  String?
+  category    Category? @relation(fields: [categoryId], references: [id])
+  title       String
+  imageUrl    String
+  price       Int
+  currency    String   @default("EUR")
+  dimensions  String?
+  year        Int?
+  description String?
+  isAvailable Boolean  @default(true)
+  reservedUntil DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  variants    Variant[]
+  reservations Reservation[]
+  orders      Order[]
+
+  @@index([artistId])
+  @@index([categoryId])
+  @@index([createdAt])
+  @@index([reservedUntil])
+}
+
+model BannerCtaMetric {
+  id        String   @id @default(uuid())
+  artistId  String
+  ctaKey    String
+  ctaLabel  String?
+  ctaHref   String
+  placement String?
+  presetId  String?
+  source    String?
+  date      DateTime @default(now())
+  clicks    Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  artist Artist @relation(fields: [artistId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([artistId, ctaKey, date])
+  @@index([artistId, date])
+}
+
+model Variant {
+  id            String   @id @default(uuid())
+  artworkId     String
+  artwork       Artwork  @relation(fields: [artworkId], references: [id], onDelete: Cascade)
+  name          String
+  priceOverride Int?
+  stockQuantity Int?     @default(1)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  reservations  Reservation[]
+  orders        Order[]
+
+  @@index([artworkId])
+}
+
+model Reservation {
+  id          String   @id @default(uuid())
+  artworkId   String
+  variantId   String?
+  artwork     Artwork  @relation(fields: [artworkId], references: [id], onDelete: Cascade)
+  variant     Variant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+  quantity    Int      @default(1)
+  status      ReservationStatus @default(active)
+  stripeSessionId String? @unique
+  expiresAt   DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([artworkId])
+  @@index([variantId])
+  @@index([expiresAt])
+}
+
+model Order {
+  id          String   @id @default(uuid())
+  artworkId   String
+  variantId   String?
+  artistId    String
+  artwork     Artwork  @relation(fields: [artworkId], references: [id])
+  variant     Variant? @relation(fields: [variantId], references: [id])
+  artist      Artist   @relation(fields: [artistId], references: [id])
+  buyerEmail  String?
+  buyerName   String?
+  buyerPhone  String?
+  amount      Int
+  currency    String @default("EUR")
+  tax         Int  @default(0)
+  shipping    Int  @default(0)
+  fee         Int  @default(0)
+  net         Int  @default(0)
+  stripeSessionId String @unique
+  paymentIntentId String?
+  status      OrderStatus
+  fulfillmentStatus FulfillmentStatus @default(pending_shipment)
+  fulfilledAt DateTime?
+  billingAddress  Json?
+  shippingAddress Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([artistId])
+  @@index([artworkId])
+  @@index([variantId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([fulfillmentStatus])
+}
+
+model BlogPost {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  title       String
+  content     String
+  excerpt     String?
+  imageUrl    String?
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([publishedAt])
+  @@index([createdAt])
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  date        DateTime
+  location    String?
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([date])
+}
+
+model Lead {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  message   String?
+  artworkId String?
+  artistId  String?
+  createdAt DateTime @default(now())
+}
+
+model WebhookEvent {
+  id         String   @id @default(uuid())
+  provider   String
+  type       String
+  payload    Json
+  eventId    String?
+  receivedAt DateTime @default(now())
+
+  @@unique([provider, eventId])
+  @@index([provider])
+  @@index([type])
+  @@index([receivedAt])
+}
+
+model ProfileCustomization {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  content   Json?
+  draftContent     Json?
+  publishedContent Json?
+  status           PublishStatus?
+  publishedAt      DateTime?
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ArtistPage {
+  id               String   @id @default(uuid())
+  userId           String
+  key              String
+  draftContent     Json?
+  publishedContent Json?
+  status           PublishStatus?
+  publishedAt      DateTime?
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, key])
+  @@index([userId])
+  @@index([key])
+}

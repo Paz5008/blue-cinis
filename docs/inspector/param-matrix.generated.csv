@@ -1,0 +1,735 @@
+BlockType,ParameterPath,Type,Optional,SuggestedTab,SuggestedControl
+ArtistBioBlock,alignment,enum<left|center|right>,true,settings,segmented
+ArtistBioBlock,color,string,true,styles,color
+ArtistBioBlock,content,string,true,content,text
+ArtistBioBlock,fontFamily,string,true,styles,text
+ArtistBioBlock,fontSize,string,true,styles,text
+ArtistBioBlock,fontWeight,string,true,styles,text
+ArtistBioBlock,letterSpacing,string,true,settings,text
+ArtistBioBlock,lineHeight,string,true,settings,text (CSS)
+ArtistBioBlock,showOnDesktop,boolean,true,settings,toggle
+ArtistBioBlock,showOnLg,boolean,true,settings,toggle
+ArtistBioBlock,showOnMd,boolean,true,settings,toggle
+ArtistBioBlock,showOnMobile,boolean,true,settings,toggle
+ArtistBioBlock,showOnSm,boolean,true,settings,toggle
+ArtistBioBlock,showOnXl,boolean,true,settings,toggle
+ArtistBioBlock,style.backgroundColor,string,true,styles,color
+ArtistBioBlock,style.backgroundImageUrl,string,true,styles,media
+ArtistBioBlock,style.backgroundPosition,string,true,styles,text (CSS)
+ArtistBioBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+ArtistBioBlock,style.backgroundRepeat,string,true,styles,text
+ArtistBioBlock,style.backgroundSize,string,true,styles,text (CSS)
+ArtistBioBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+ArtistBioBlock,style.blendMode,string,true,styles,text
+ArtistBioBlock,style.borderRadius,string,true,styles,text (CSS)
+ArtistBioBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+ArtistBioBlock,style.gap,string,true,styles,text
+ArtistBioBlock,style.gradientDirection,string,true,styles,text
+ArtistBioBlock,style.gradientFrom,string,true,styles,text
+ArtistBioBlock,style.gradientTo,string,true,styles,text
+ArtistBioBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+ArtistBioBlock,style.hoverScale,number,true,styles,slider+number
+ArtistBioBlock,style.hoverShadow,string,true,styles,text
+ArtistBioBlock,style.hoverTransitionMs,number,true,styles,number
+ArtistBioBlock,style.imageScale,number,true,styles,slider+number
+ArtistBioBlock,style.marginBottom,string,true,styles,text
+ArtistBioBlock,style.marginLeft,string,true,styles,text
+ArtistBioBlock,style.marginRight,string,true,styles,text
+ArtistBioBlock,style.marginTop,string,true,styles,text
+ArtistBioBlock,style.overlayColor,string,true,styles,color
+ArtistBioBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+ArtistBioBlock,style.padding,string,true,styles,text
+ArtistBioBlock,style.parallax,boolean,true,styles,toggle
+ArtistBioBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+ArtistBioBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+ArtistBioBlock,textTransform,enum<none|uppercase|lowercase|capitalize>,true,settings,segmented
+ArtistNameBlock,alignment,enum<left|center|right>,true,settings,segmented
+ArtistNameBlock,color,string,true,styles,color
+ArtistNameBlock,fontFamily,string,true,styles,text
+ArtistNameBlock,fontSize,string,true,styles,text
+ArtistNameBlock,fontWeight,string,true,styles,text
+ArtistNameBlock,letterSpacing,string,true,settings,text
+ArtistNameBlock,lineHeight,string,true,settings,text (CSS)
+ArtistNameBlock,showOnDesktop,boolean,true,settings,toggle
+ArtistNameBlock,showOnLg,boolean,true,settings,toggle
+ArtistNameBlock,showOnMd,boolean,true,settings,toggle
+ArtistNameBlock,showOnMobile,boolean,true,settings,toggle
+ArtistNameBlock,showOnSm,boolean,true,settings,toggle
+ArtistNameBlock,showOnXl,boolean,true,settings,toggle
+ArtistNameBlock,style.backgroundColor,string,true,styles,color
+ArtistNameBlock,style.backgroundImageUrl,string,true,styles,media
+ArtistNameBlock,style.backgroundPosition,string,true,styles,text (CSS)
+ArtistNameBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+ArtistNameBlock,style.backgroundRepeat,string,true,styles,text
+ArtistNameBlock,style.backgroundSize,string,true,styles,text (CSS)
+ArtistNameBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+ArtistNameBlock,style.blendMode,string,true,styles,text
+ArtistNameBlock,style.borderRadius,string,true,styles,text (CSS)
+ArtistNameBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+ArtistNameBlock,style.gap,string,true,styles,text
+ArtistNameBlock,style.gradientDirection,string,true,styles,text
+ArtistNameBlock,style.gradientFrom,string,true,styles,text
+ArtistNameBlock,style.gradientTo,string,true,styles,text
+ArtistNameBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+ArtistNameBlock,style.hoverScale,number,true,styles,slider+number
+ArtistNameBlock,style.hoverShadow,string,true,styles,text
+ArtistNameBlock,style.hoverTransitionMs,number,true,styles,number
+ArtistNameBlock,style.imageScale,number,true,styles,slider+number
+ArtistNameBlock,style.marginBottom,string,true,styles,text
+ArtistNameBlock,style.marginLeft,string,true,styles,text
+ArtistNameBlock,style.marginRight,string,true,styles,text
+ArtistNameBlock,style.marginTop,string,true,styles,text
+ArtistNameBlock,style.overlayColor,string,true,styles,color
+ArtistNameBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+ArtistNameBlock,style.padding,string,true,styles,text
+ArtistNameBlock,style.parallax,boolean,true,styles,toggle
+ArtistNameBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+ArtistNameBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+ArtistNameBlock,tag,enum<h1|h2|h3>,true,settings,segmented
+ArtistNameBlock,textTransform,enum<none|uppercase|lowercase|capitalize>,true,settings,segmented
+ArtistPhotoBlock,alignment,enum<left|center|right>,true,settings,segmented
+ArtistPhotoBlock,objectFit,enum<none|cover|contain|fill|scale-down>,true,settings,segmented
+ArtistPhotoBlock,objectPosition,string,true,settings,text (CSS)
+ArtistPhotoBlock,shapePreset,enum<square|rounded|soft|circle>,true,settings,segmented
+ArtistPhotoBlock,showOnDesktop,boolean,true,settings,toggle
+ArtistPhotoBlock,showOnLg,boolean,true,settings,toggle
+ArtistPhotoBlock,showOnMd,boolean,true,settings,toggle
+ArtistPhotoBlock,showOnMobile,boolean,true,settings,toggle
+ArtistPhotoBlock,showOnSm,boolean,true,settings,toggle
+ArtistPhotoBlock,showOnXl,boolean,true,settings,toggle
+ArtistPhotoBlock,size,enum<small|medium|large|full>,true,settings,segmented
+ArtistPhotoBlock,style.backgroundColor,string,true,styles,color
+ArtistPhotoBlock,style.backgroundImageUrl,string,true,styles,media
+ArtistPhotoBlock,style.backgroundPosition,string,true,styles,text (CSS)
+ArtistPhotoBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+ArtistPhotoBlock,style.backgroundRepeat,string,true,styles,text
+ArtistPhotoBlock,style.backgroundSize,string,true,styles,text (CSS)
+ArtistPhotoBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+ArtistPhotoBlock,style.blendMode,string,true,styles,text
+ArtistPhotoBlock,style.borderRadius,string,true,styles,text (CSS)
+ArtistPhotoBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+ArtistPhotoBlock,style.gap,string,true,styles,text
+ArtistPhotoBlock,style.gradientDirection,string,true,styles,text
+ArtistPhotoBlock,style.gradientFrom,string,true,styles,text
+ArtistPhotoBlock,style.gradientTo,string,true,styles,text
+ArtistPhotoBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+ArtistPhotoBlock,style.hoverScale,number,true,styles,slider+number
+ArtistPhotoBlock,style.hoverShadow,string,true,styles,text
+ArtistPhotoBlock,style.hoverTransitionMs,number,true,styles,number
+ArtistPhotoBlock,style.imageScale,number,true,styles,slider+number
+ArtistPhotoBlock,style.marginBottom,string,true,styles,text
+ArtistPhotoBlock,style.marginLeft,string,true,styles,text
+ArtistPhotoBlock,style.marginRight,string,true,styles,text
+ArtistPhotoBlock,style.marginTop,string,true,styles,text
+ArtistPhotoBlock,style.overlayColor,string,true,styles,color
+ArtistPhotoBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+ArtistPhotoBlock,style.padding,string,true,styles,text
+ArtistPhotoBlock,style.parallax,boolean,true,styles,toggle
+ArtistPhotoBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+ArtistPhotoBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+ArtworkListBlock,cardBackgroundColor,string,true,styles,color
+ArtworkListBlock,cardBackgroundImageUrl,string,true,styles,media
+ArtworkListBlock,cardBorderRadius,string,true,styles,text (CSS)
+ArtworkListBlock,cardBoxShadow,string,true,styles,text
+ArtworkListBlock,cardPadding,string,true,settings,text
+ArtworkListBlock,cardPreset,enum<default|minimal|bordered|elevated>,true,settings,segmented
+ArtworkListBlock,cardTextColor,string,true,styles,color
+ArtworkListBlock,columnsDesktop,number,true,settings,slider+number
+ArtworkListBlock,columnsMobile,number,true,settings,slider+number
+ArtworkListBlock,gap,number,true,settings,slider+number
+ArtworkListBlock,layout,enum<grid|carousel>,true,settings,segmented
+ArtworkListBlock,limit,number,true,settings,number
+ArtworkListBlock,mode,enum<manual|query>,true,settings,segmented
+ArtworkListBlock,pageSize,number,true,settings,number
+ArtworkListBlock,paginationType,enum<none|paginate|loadMore>,true,settings,segmented
+ArtworkListBlock,query.categoryIds,unknown,true,content,text
+ArtworkListBlock,query.priceMax,number,true,content,number
+ArtworkListBlock,query.priceMin,number,true,content,number
+ArtworkListBlock,query.search,string,true,content,text
+ArtworkListBlock,query.yearMax,number,true,content,number
+ArtworkListBlock,query.yearMin,number,true,content,number
+ArtworkListBlock,selection,unknown,true,settings,text
+ArtworkListBlock,showArtist,boolean,true,settings,toggle
+ArtworkListBlock,showAvailability,boolean,true,settings,toggle
+ArtworkListBlock,showDescription,boolean,true,settings,toggle
+ArtworkListBlock,showDimensions,boolean,true,settings,toggle
+ArtworkListBlock,showOnDesktop,boolean,true,settings,toggle
+ArtworkListBlock,showOnLg,boolean,true,settings,toggle
+ArtworkListBlock,showOnMd,boolean,true,settings,toggle
+ArtworkListBlock,showOnMobile,boolean,true,settings,toggle
+ArtworkListBlock,showOnSm,boolean,true,settings,toggle
+ArtworkListBlock,showOnXl,boolean,true,settings,toggle
+ArtworkListBlock,showPrice,boolean,true,settings,toggle
+ArtworkListBlock,showTitle,boolean,true,settings,toggle
+ArtworkListBlock,showYear,boolean,true,settings,toggle
+ArtworkListBlock,sortBy,enum<manual|title|price|year|createdAt>,true,settings,segmented
+ArtworkListBlock,sortOrder,enum<asc|desc>,true,settings,segmented
+ArtworkListBlock,style.backgroundColor,string,true,styles,color
+ArtworkListBlock,style.backgroundImageUrl,string,true,styles,media
+ArtworkListBlock,style.backgroundPosition,string,true,styles,text (CSS)
+ArtworkListBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+ArtworkListBlock,style.backgroundRepeat,string,true,styles,text
+ArtworkListBlock,style.backgroundSize,string,true,styles,text (CSS)
+ArtworkListBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+ArtworkListBlock,style.blendMode,string,true,styles,text
+ArtworkListBlock,style.borderRadius,string,true,styles,text (CSS)
+ArtworkListBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+ArtworkListBlock,style.gap,string,true,styles,text
+ArtworkListBlock,style.gradientDirection,string,true,styles,text
+ArtworkListBlock,style.gradientFrom,string,true,styles,text
+ArtworkListBlock,style.gradientTo,string,true,styles,text
+ArtworkListBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+ArtworkListBlock,style.hoverScale,number,true,styles,slider+number
+ArtworkListBlock,style.hoverShadow,string,true,styles,text
+ArtworkListBlock,style.hoverTransitionMs,number,true,styles,number
+ArtworkListBlock,style.imageScale,number,true,styles,slider+number
+ArtworkListBlock,style.marginBottom,string,true,styles,text
+ArtworkListBlock,style.marginLeft,string,true,styles,text
+ArtworkListBlock,style.marginRight,string,true,styles,text
+ArtworkListBlock,style.marginTop,string,true,styles,text
+ArtworkListBlock,style.overlayColor,string,true,styles,color
+ArtworkListBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+ArtworkListBlock,style.padding,string,true,styles,text
+ArtworkListBlock,style.parallax,boolean,true,styles,toggle
+ArtworkListBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+ArtworkListBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+BaseBlock,showOnDesktop,boolean,true,settings,toggle
+BaseBlock,showOnLg,boolean,true,settings,toggle
+BaseBlock,showOnMd,boolean,true,settings,toggle
+BaseBlock,showOnMobile,boolean,true,settings,toggle
+BaseBlock,showOnSm,boolean,true,settings,toggle
+BaseBlock,showOnXl,boolean,true,settings,toggle
+BaseBlock,style.backgroundColor,string,true,styles,color
+BaseBlock,style.backgroundImageUrl,string,true,styles,media
+BaseBlock,style.backgroundPosition,string,true,styles,text (CSS)
+BaseBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+BaseBlock,style.backgroundRepeat,string,true,styles,text
+BaseBlock,style.backgroundSize,string,true,styles,text (CSS)
+BaseBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+BaseBlock,style.blendMode,string,true,styles,text
+BaseBlock,style.borderRadius,string,true,styles,text (CSS)
+BaseBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+BaseBlock,style.gap,string,true,styles,text
+BaseBlock,style.gradientDirection,string,true,styles,text
+BaseBlock,style.gradientFrom,string,true,styles,text
+BaseBlock,style.gradientTo,string,true,styles,text
+BaseBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+BaseBlock,style.hoverScale,number,true,styles,slider+number
+BaseBlock,style.hoverShadow,string,true,styles,text
+BaseBlock,style.hoverTransitionMs,number,true,styles,number
+BaseBlock,style.imageScale,number,true,styles,slider+number
+BaseBlock,style.marginBottom,string,true,styles,text
+BaseBlock,style.marginLeft,string,true,styles,text
+BaseBlock,style.marginRight,string,true,styles,text
+BaseBlock,style.marginTop,string,true,styles,text
+BaseBlock,style.overlayColor,string,true,styles,color
+BaseBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+BaseBlock,style.padding,string,true,styles,text
+BaseBlock,style.parallax,boolean,true,styles,toggle
+BaseBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+BaseBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+ButtonBlock,alignment,enum<left|center|right>,true,settings,segmented
+ButtonBlock,label,string,false,content,text
+ButtonBlock,showOnDesktop,boolean,true,settings,toggle
+ButtonBlock,showOnLg,boolean,true,settings,toggle
+ButtonBlock,showOnMd,boolean,true,settings,toggle
+ButtonBlock,showOnMobile,boolean,true,settings,toggle
+ButtonBlock,showOnSm,boolean,true,settings,toggle
+ButtonBlock,showOnXl,boolean,true,settings,toggle
+ButtonBlock,style.backgroundColor,string,true,styles,color
+ButtonBlock,style.backgroundImageUrl,string,true,styles,media
+ButtonBlock,style.backgroundPosition,string,true,styles,text (CSS)
+ButtonBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+ButtonBlock,style.backgroundRepeat,string,true,styles,text
+ButtonBlock,style.backgroundSize,string,true,styles,text (CSS)
+ButtonBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+ButtonBlock,style.blendMode,string,true,styles,text
+ButtonBlock,style.borderRadius,string,true,styles,text (CSS)
+ButtonBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+ButtonBlock,style.gap,string,true,styles,text
+ButtonBlock,style.gradientDirection,string,true,styles,text
+ButtonBlock,style.gradientFrom,string,true,styles,text
+ButtonBlock,style.gradientTo,string,true,styles,text
+ButtonBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+ButtonBlock,style.hoverScale,number,true,styles,slider+number
+ButtonBlock,style.hoverShadow,string,true,styles,text
+ButtonBlock,style.hoverTransitionMs,number,true,styles,number
+ButtonBlock,style.imageScale,number,true,styles,slider+number
+ButtonBlock,style.marginBottom,string,true,styles,text
+ButtonBlock,style.marginLeft,string,true,styles,text
+ButtonBlock,style.marginRight,string,true,styles,text
+ButtonBlock,style.marginTop,string,true,styles,text
+ButtonBlock,style.overlayColor,string,true,styles,color
+ButtonBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+ButtonBlock,style.padding,string,true,styles,text
+ButtonBlock,style.parallax,boolean,true,styles,toggle
+ButtonBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+ButtonBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+ButtonBlock,url,string,false,settings,text
+ColumnBlock,columns,array,false,settings,list
+ColumnBlock,count,number,false,settings,number
+ColumnBlock,showOnDesktop,boolean,true,settings,toggle
+ColumnBlock,showOnLg,boolean,true,settings,toggle
+ColumnBlock,showOnMd,boolean,true,settings,toggle
+ColumnBlock,showOnMobile,boolean,true,settings,toggle
+ColumnBlock,showOnSm,boolean,true,settings,toggle
+ColumnBlock,showOnXl,boolean,true,settings,toggle
+ColumnBlock,style.backgroundColor,string,true,styles,color
+ColumnBlock,style.backgroundImageUrl,string,true,styles,media
+ColumnBlock,style.backgroundPosition,string,true,styles,text (CSS)
+ColumnBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+ColumnBlock,style.backgroundRepeat,string,true,styles,text
+ColumnBlock,style.backgroundSize,string,true,styles,text (CSS)
+ColumnBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+ColumnBlock,style.blendMode,string,true,styles,text
+ColumnBlock,style.borderRadius,string,true,styles,text (CSS)
+ColumnBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+ColumnBlock,style.gap,string,true,styles,text
+ColumnBlock,style.gradientDirection,string,true,styles,text
+ColumnBlock,style.gradientFrom,string,true,styles,text
+ColumnBlock,style.gradientTo,string,true,styles,text
+ColumnBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+ColumnBlock,style.hoverScale,number,true,styles,slider+number
+ColumnBlock,style.hoverShadow,string,true,styles,text
+ColumnBlock,style.hoverTransitionMs,number,true,styles,number
+ColumnBlock,style.imageScale,number,true,styles,slider+number
+ColumnBlock,style.marginBottom,string,true,styles,text
+ColumnBlock,style.marginLeft,string,true,styles,text
+ColumnBlock,style.marginRight,string,true,styles,text
+ColumnBlock,style.marginTop,string,true,styles,text
+ColumnBlock,style.overlayColor,string,true,styles,color
+ColumnBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+ColumnBlock,style.padding,string,true,styles,text
+ColumnBlock,style.parallax,boolean,true,styles,toggle
+ColumnBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+ColumnBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+ContactFormBlock,showOnDesktop,boolean,true,settings,toggle
+ContactFormBlock,showOnLg,boolean,true,settings,toggle
+ContactFormBlock,showOnMd,boolean,true,settings,toggle
+ContactFormBlock,showOnMobile,boolean,true,settings,toggle
+ContactFormBlock,showOnSm,boolean,true,settings,toggle
+ContactFormBlock,showOnXl,boolean,true,settings,toggle
+ContactFormBlock,style.backgroundColor,string,true,styles,color
+ContactFormBlock,style.backgroundImageUrl,string,true,styles,media
+ContactFormBlock,style.backgroundPosition,string,true,styles,text (CSS)
+ContactFormBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+ContactFormBlock,style.backgroundRepeat,string,true,styles,text
+ContactFormBlock,style.backgroundSize,string,true,styles,text (CSS)
+ContactFormBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+ContactFormBlock,style.blendMode,string,true,styles,text
+ContactFormBlock,style.borderRadius,string,true,styles,text (CSS)
+ContactFormBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+ContactFormBlock,style.gap,string,true,styles,text
+ContactFormBlock,style.gradientDirection,string,true,styles,text
+ContactFormBlock,style.gradientFrom,string,true,styles,text
+ContactFormBlock,style.gradientTo,string,true,styles,text
+ContactFormBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+ContactFormBlock,style.hoverScale,number,true,styles,slider+number
+ContactFormBlock,style.hoverShadow,string,true,styles,text
+ContactFormBlock,style.hoverTransitionMs,number,true,styles,number
+ContactFormBlock,style.imageScale,number,true,styles,slider+number
+ContactFormBlock,style.marginBottom,string,true,styles,text
+ContactFormBlock,style.marginLeft,string,true,styles,text
+ContactFormBlock,style.marginRight,string,true,styles,text
+ContactFormBlock,style.marginTop,string,true,styles,text
+ContactFormBlock,style.overlayColor,string,true,styles,color
+ContactFormBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+ContactFormBlock,style.padding,string,true,styles,text
+ContactFormBlock,style.parallax,boolean,true,styles,toggle
+ContactFormBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+ContactFormBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+ContainerBlock,children,array,false,settings,list
+ContainerBlock,columns,number,true,settings,slider+number
+ContainerBlock,showOnDesktop,boolean,true,settings,toggle
+ContainerBlock,showOnLg,boolean,true,settings,toggle
+ContainerBlock,showOnMd,boolean,true,settings,toggle
+ContainerBlock,showOnMobile,boolean,true,settings,toggle
+ContainerBlock,showOnSm,boolean,true,settings,toggle
+ContainerBlock,showOnXl,boolean,true,settings,toggle
+ContainerBlock,style.backgroundColor,string,true,styles,color
+ContainerBlock,style.backgroundImageUrl,string,true,styles,media
+ContainerBlock,style.backgroundPosition,string,true,styles,text (CSS)
+ContainerBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+ContainerBlock,style.backgroundRepeat,string,true,styles,text
+ContainerBlock,style.backgroundSize,string,true,styles,text (CSS)
+ContainerBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+ContainerBlock,style.blendMode,string,true,styles,text
+ContainerBlock,style.borderRadius,string,true,styles,text (CSS)
+ContainerBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+ContainerBlock,style.gap,string,true,styles,text
+ContainerBlock,style.gradientDirection,string,true,styles,text
+ContainerBlock,style.gradientFrom,string,true,styles,text
+ContainerBlock,style.gradientTo,string,true,styles,text
+ContainerBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+ContainerBlock,style.hoverScale,number,true,styles,slider+number
+ContainerBlock,style.hoverShadow,string,true,styles,text
+ContainerBlock,style.hoverTransitionMs,number,true,styles,number
+ContainerBlock,style.imageScale,number,true,styles,slider+number
+ContainerBlock,style.marginBottom,string,true,styles,text
+ContainerBlock,style.marginLeft,string,true,styles,text
+ContainerBlock,style.marginRight,string,true,styles,text
+ContainerBlock,style.marginTop,string,true,styles,text
+ContainerBlock,style.overlayColor,string,true,styles,color
+ContainerBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+ContainerBlock,style.padding,string,true,styles,text
+ContainerBlock,style.parallax,boolean,true,styles,toggle
+ContainerBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+ContainerBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+DividerBlock,borderStyle,enum<solid|dashed|dotted>,true,styles,segmented
+DividerBlock,color,string,true,styles,color
+DividerBlock,showOnDesktop,boolean,true,settings,toggle
+DividerBlock,showOnLg,boolean,true,settings,toggle
+DividerBlock,showOnMd,boolean,true,settings,toggle
+DividerBlock,showOnMobile,boolean,true,settings,toggle
+DividerBlock,showOnSm,boolean,true,settings,toggle
+DividerBlock,showOnXl,boolean,true,settings,toggle
+DividerBlock,style.backgroundColor,string,true,styles,color
+DividerBlock,style.backgroundImageUrl,string,true,styles,media
+DividerBlock,style.backgroundPosition,string,true,styles,text (CSS)
+DividerBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+DividerBlock,style.backgroundRepeat,string,true,styles,text
+DividerBlock,style.backgroundSize,string,true,styles,text (CSS)
+DividerBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+DividerBlock,style.blendMode,string,true,styles,text
+DividerBlock,style.borderRadius,string,true,styles,text (CSS)
+DividerBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+DividerBlock,style.gap,string,true,styles,text
+DividerBlock,style.gradientDirection,string,true,styles,text
+DividerBlock,style.gradientFrom,string,true,styles,text
+DividerBlock,style.gradientTo,string,true,styles,text
+DividerBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+DividerBlock,style.hoverScale,number,true,styles,slider+number
+DividerBlock,style.hoverShadow,string,true,styles,text
+DividerBlock,style.hoverTransitionMs,number,true,styles,number
+DividerBlock,style.imageScale,number,true,styles,slider+number
+DividerBlock,style.marginBottom,string,true,styles,text
+DividerBlock,style.marginLeft,string,true,styles,text
+DividerBlock,style.marginRight,string,true,styles,text
+DividerBlock,style.marginTop,string,true,styles,text
+DividerBlock,style.overlayColor,string,true,styles,color
+DividerBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+DividerBlock,style.padding,string,true,styles,text
+DividerBlock,style.parallax,boolean,true,styles,toggle
+DividerBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+DividerBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+DividerBlock,thickness,number,true,settings,slider+number
+GalleryBlock,columns,number,true,settings,slider+number
+GalleryBlock,images,array,false,content,media-multi
+GalleryBlock,layout,enum<grid|carousel|masonry>,true,settings,segmented
+GalleryBlock,objectFit,enum<none|cover|contain|fill|scale-down>,true,settings,segmented
+GalleryBlock,objectPosition,string,true,settings,text (CSS)
+GalleryBlock,showOnDesktop,boolean,true,settings,toggle
+GalleryBlock,showOnLg,boolean,true,settings,toggle
+GalleryBlock,showOnMd,boolean,true,settings,toggle
+GalleryBlock,showOnMobile,boolean,true,settings,toggle
+GalleryBlock,showOnSm,boolean,true,settings,toggle
+GalleryBlock,showOnXl,boolean,true,settings,toggle
+GalleryBlock,style.backgroundColor,string,true,styles,color
+GalleryBlock,style.backgroundImageUrl,string,true,styles,media
+GalleryBlock,style.backgroundPosition,string,true,styles,text (CSS)
+GalleryBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+GalleryBlock,style.backgroundRepeat,string,true,styles,text
+GalleryBlock,style.backgroundSize,string,true,styles,text (CSS)
+GalleryBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+GalleryBlock,style.blendMode,string,true,styles,text
+GalleryBlock,style.borderRadius,string,true,styles,text (CSS)
+GalleryBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+GalleryBlock,style.gap,string,true,styles,text
+GalleryBlock,style.gradientDirection,string,true,styles,text
+GalleryBlock,style.gradientFrom,string,true,styles,text
+GalleryBlock,style.gradientTo,string,true,styles,text
+GalleryBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+GalleryBlock,style.hoverScale,number,true,styles,slider+number
+GalleryBlock,style.hoverShadow,string,true,styles,text
+GalleryBlock,style.hoverTransitionMs,number,true,styles,number
+GalleryBlock,style.imageScale,number,true,styles,slider+number
+GalleryBlock,style.marginBottom,string,true,styles,text
+GalleryBlock,style.marginLeft,string,true,styles,text
+GalleryBlock,style.marginRight,string,true,styles,text
+GalleryBlock,style.marginTop,string,true,styles,text
+GalleryBlock,style.overlayColor,string,true,styles,color
+GalleryBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+GalleryBlock,style.padding,string,true,styles,text
+GalleryBlock,style.parallax,boolean,true,styles,toggle
+GalleryBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+GalleryBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+ImageBlock,alignment,enum<left|center|right>,true,settings,segmented
+ImageBlock,altText,string,true,settings,text
+ImageBlock,caption,string,true,content,text
+ImageBlock,showOnDesktop,boolean,true,settings,toggle
+ImageBlock,showOnLg,boolean,true,settings,toggle
+ImageBlock,showOnMd,boolean,true,settings,toggle
+ImageBlock,showOnMobile,boolean,true,settings,toggle
+ImageBlock,showOnSm,boolean,true,settings,toggle
+ImageBlock,showOnXl,boolean,true,settings,toggle
+ImageBlock,size,enum<small|medium|large|full>,true,settings,segmented
+ImageBlock,src,string,false,settings,media
+ImageBlock,style.backgroundColor,string,true,styles,color
+ImageBlock,style.backgroundImageUrl,string,true,styles,media
+ImageBlock,style.backgroundPosition,string,true,styles,text (CSS)
+ImageBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+ImageBlock,style.backgroundRepeat,string,true,styles,text
+ImageBlock,style.backgroundSize,string,true,styles,text (CSS)
+ImageBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+ImageBlock,style.blendMode,string,true,styles,text
+ImageBlock,style.borderRadius,string,true,styles,text (CSS)
+ImageBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+ImageBlock,style.gap,string,true,styles,text
+ImageBlock,style.gradientDirection,string,true,styles,text
+ImageBlock,style.gradientFrom,string,true,styles,text
+ImageBlock,style.gradientTo,string,true,styles,text
+ImageBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+ImageBlock,style.hoverScale,number,true,styles,slider+number
+ImageBlock,style.hoverShadow,string,true,styles,text
+ImageBlock,style.hoverTransitionMs,number,true,styles,number
+ImageBlock,style.imageScale,number,true,styles,slider+number
+ImageBlock,style.marginBottom,string,true,styles,text
+ImageBlock,style.marginLeft,string,true,styles,text
+ImageBlock,style.marginRight,string,true,styles,text
+ImageBlock,style.marginTop,string,true,styles,text
+ImageBlock,style.overlayColor,string,true,styles,color
+ImageBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+ImageBlock,style.padding,string,true,styles,text
+ImageBlock,style.parallax,boolean,true,styles,toggle
+ImageBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+ImageBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+OeuvreBlock,artworks,array,false,content,entity-multi
+OeuvreBlock,borderColor,string,true,styles,color
+OeuvreBlock,borderStyle,enum<none|solid|dashed|dotted>,true,styles,segmented
+OeuvreBlock,borderThickness,number,true,styles,slider+number
+OeuvreBlock,cardBackgroundColor,string,true,styles,color
+OeuvreBlock,cardBackgroundImageUrl,string,true,styles,media
+OeuvreBlock,cardBorderRadius,string,true,styles,text (CSS)
+OeuvreBlock,cardBoxShadow,string,true,styles,text
+OeuvreBlock,cardPadding,string,true,settings,text
+OeuvreBlock,cardTextColor,string,true,styles,color
+OeuvreBlock,columns,number,true,settings,slider+number
+OeuvreBlock,descriptionColor,string,true,styles,color
+OeuvreBlock,descriptionFontSize,string,true,styles,text
+OeuvreBlock,dimensionsColor,string,true,styles,color
+OeuvreBlock,dimensionsFontSize,string,true,styles,text
+OeuvreBlock,gap,number,true,settings,slider+number
+OeuvreBlock,layout,enum<grid|carousel>,true,settings,segmented
+OeuvreBlock,limit,number,true,settings,number
+OeuvreBlock,showArtist,boolean,true,settings,toggle
+OeuvreBlock,showAvailability,boolean,true,settings,toggle
+OeuvreBlock,showDescription,boolean,true,settings,toggle
+OeuvreBlock,showDimensions,boolean,true,settings,toggle
+OeuvreBlock,showOnDesktop,boolean,true,settings,toggle
+OeuvreBlock,showOnLg,boolean,true,settings,toggle
+OeuvreBlock,showOnMd,boolean,true,settings,toggle
+OeuvreBlock,showOnMobile,boolean,true,settings,toggle
+OeuvreBlock,showOnSm,boolean,true,settings,toggle
+OeuvreBlock,showOnXl,boolean,true,settings,toggle
+OeuvreBlock,showPrice,boolean,true,settings,toggle
+OeuvreBlock,showTitle,boolean,true,settings,toggle
+OeuvreBlock,showYear,boolean,true,settings,toggle
+OeuvreBlock,sortBy,enum<manual|title|price|year>,true,settings,segmented
+OeuvreBlock,sortOrder,enum<asc|desc>,true,settings,segmented
+OeuvreBlock,style.backgroundColor,string,true,styles,color
+OeuvreBlock,style.backgroundImageUrl,string,true,styles,media
+OeuvreBlock,style.backgroundPosition,string,true,styles,text (CSS)
+OeuvreBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+OeuvreBlock,style.backgroundRepeat,string,true,styles,text
+OeuvreBlock,style.backgroundSize,string,true,styles,text (CSS)
+OeuvreBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+OeuvreBlock,style.blendMode,string,true,styles,text
+OeuvreBlock,style.borderRadius,string,true,styles,text (CSS)
+OeuvreBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+OeuvreBlock,style.gap,string,true,styles,text
+OeuvreBlock,style.gradientDirection,string,true,styles,text
+OeuvreBlock,style.gradientFrom,string,true,styles,text
+OeuvreBlock,style.gradientTo,string,true,styles,text
+OeuvreBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+OeuvreBlock,style.hoverScale,number,true,styles,slider+number
+OeuvreBlock,style.hoverShadow,string,true,styles,text
+OeuvreBlock,style.hoverTransitionMs,number,true,styles,number
+OeuvreBlock,style.imageScale,number,true,styles,slider+number
+OeuvreBlock,style.marginBottom,string,true,styles,text
+OeuvreBlock,style.marginLeft,string,true,styles,text
+OeuvreBlock,style.marginRight,string,true,styles,text
+OeuvreBlock,style.marginTop,string,true,styles,text
+OeuvreBlock,style.overlayColor,string,true,styles,color
+OeuvreBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+OeuvreBlock,style.padding,string,true,styles,text
+OeuvreBlock,style.parallax,boolean,true,styles,toggle
+OeuvreBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+OeuvreBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+OeuvreBlock,titleColor,string,true,styles,color
+OeuvreBlock,titleFontSize,string,true,styles,text
+QuoteBlock,alignment,enum<left|center|right>,true,settings,segmented
+QuoteBlock,author,string,true,settings,text
+QuoteBlock,content,string,false,content,text
+QuoteBlock,showOnDesktop,boolean,true,settings,toggle
+QuoteBlock,showOnLg,boolean,true,settings,toggle
+QuoteBlock,showOnMd,boolean,true,settings,toggle
+QuoteBlock,showOnMobile,boolean,true,settings,toggle
+QuoteBlock,showOnSm,boolean,true,settings,toggle
+QuoteBlock,showOnXl,boolean,true,settings,toggle
+QuoteBlock,style.backgroundColor,string,true,styles,color
+QuoteBlock,style.backgroundImageUrl,string,true,styles,media
+QuoteBlock,style.backgroundPosition,string,true,styles,text (CSS)
+QuoteBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+QuoteBlock,style.backgroundRepeat,string,true,styles,text
+QuoteBlock,style.backgroundSize,string,true,styles,text (CSS)
+QuoteBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+QuoteBlock,style.blendMode,string,true,styles,text
+QuoteBlock,style.borderRadius,string,true,styles,text (CSS)
+QuoteBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+QuoteBlock,style.gap,string,true,styles,text
+QuoteBlock,style.gradientDirection,string,true,styles,text
+QuoteBlock,style.gradientFrom,string,true,styles,text
+QuoteBlock,style.gradientTo,string,true,styles,text
+QuoteBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+QuoteBlock,style.hoverScale,number,true,styles,slider+number
+QuoteBlock,style.hoverShadow,string,true,styles,text
+QuoteBlock,style.hoverTransitionMs,number,true,styles,number
+QuoteBlock,style.imageScale,number,true,styles,slider+number
+QuoteBlock,style.marginBottom,string,true,styles,text
+QuoteBlock,style.marginLeft,string,true,styles,text
+QuoteBlock,style.marginRight,string,true,styles,text
+QuoteBlock,style.marginTop,string,true,styles,text
+QuoteBlock,style.overlayColor,string,true,styles,color
+QuoteBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+QuoteBlock,style.padding,string,true,styles,text
+QuoteBlock,style.parallax,boolean,true,styles,toggle
+QuoteBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+QuoteBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+SpacerBlock,height,string,true,settings,text (CSS)
+SpacerBlock,showOnDesktop,boolean,true,settings,toggle
+SpacerBlock,showOnLg,boolean,true,settings,toggle
+SpacerBlock,showOnMd,boolean,true,settings,toggle
+SpacerBlock,showOnMobile,boolean,true,settings,toggle
+SpacerBlock,showOnSm,boolean,true,settings,toggle
+SpacerBlock,showOnXl,boolean,true,settings,toggle
+SpacerBlock,style.backgroundColor,string,true,styles,color
+SpacerBlock,style.backgroundImageUrl,string,true,styles,media
+SpacerBlock,style.backgroundPosition,string,true,styles,text (CSS)
+SpacerBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+SpacerBlock,style.backgroundRepeat,string,true,styles,text
+SpacerBlock,style.backgroundSize,string,true,styles,text (CSS)
+SpacerBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+SpacerBlock,style.blendMode,string,true,styles,text
+SpacerBlock,style.borderRadius,string,true,styles,text (CSS)
+SpacerBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+SpacerBlock,style.gap,string,true,styles,text
+SpacerBlock,style.gradientDirection,string,true,styles,text
+SpacerBlock,style.gradientFrom,string,true,styles,text
+SpacerBlock,style.gradientTo,string,true,styles,text
+SpacerBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+SpacerBlock,style.hoverScale,number,true,styles,slider+number
+SpacerBlock,style.hoverShadow,string,true,styles,text
+SpacerBlock,style.hoverTransitionMs,number,true,styles,number
+SpacerBlock,style.imageScale,number,true,styles,slider+number
+SpacerBlock,style.marginBottom,string,true,styles,text
+SpacerBlock,style.marginLeft,string,true,styles,text
+SpacerBlock,style.marginRight,string,true,styles,text
+SpacerBlock,style.marginTop,string,true,styles,text
+SpacerBlock,style.overlayColor,string,true,styles,color
+SpacerBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+SpacerBlock,style.padding,string,true,styles,text
+SpacerBlock,style.parallax,boolean,true,styles,toggle
+SpacerBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+SpacerBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+TextBlock,alignment,enum<left|center|right>,true,settings,segmented
+TextBlock,color,string,true,styles,color
+TextBlock,content,string,false,content,text
+TextBlock,fontFamily,string,true,styles,text
+TextBlock,fontSize,string,true,styles,text
+TextBlock,fontWeight,string,true,styles,text
+TextBlock,letterSpacing,string,true,settings,text
+TextBlock,lineHeight,string,true,settings,text (CSS)
+TextBlock,showOnDesktop,boolean,true,settings,toggle
+TextBlock,showOnLg,boolean,true,settings,toggle
+TextBlock,showOnMd,boolean,true,settings,toggle
+TextBlock,showOnMobile,boolean,true,settings,toggle
+TextBlock,showOnSm,boolean,true,settings,toggle
+TextBlock,showOnXl,boolean,true,settings,toggle
+TextBlock,style.backgroundColor,string,true,styles,color
+TextBlock,style.backgroundImageUrl,string,true,styles,media
+TextBlock,style.backgroundPosition,string,true,styles,text (CSS)
+TextBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+TextBlock,style.backgroundRepeat,string,true,styles,text
+TextBlock,style.backgroundSize,string,true,styles,text (CSS)
+TextBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+TextBlock,style.blendMode,string,true,styles,text
+TextBlock,style.borderRadius,string,true,styles,text (CSS)
+TextBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+TextBlock,style.gap,string,true,styles,text
+TextBlock,style.gradientDirection,string,true,styles,text
+TextBlock,style.gradientFrom,string,true,styles,text
+TextBlock,style.gradientTo,string,true,styles,text
+TextBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+TextBlock,style.hoverScale,number,true,styles,slider+number
+TextBlock,style.hoverShadow,string,true,styles,text
+TextBlock,style.hoverTransitionMs,number,true,styles,number
+TextBlock,style.imageScale,number,true,styles,slider+number
+TextBlock,style.marginBottom,string,true,styles,text
+TextBlock,style.marginLeft,string,true,styles,text
+TextBlock,style.marginRight,string,true,styles,text
+TextBlock,style.marginTop,string,true,styles,text
+TextBlock,style.overlayColor,string,true,styles,color
+TextBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+TextBlock,style.padding,string,true,styles,text
+TextBlock,style.parallax,boolean,true,styles,toggle
+TextBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+TextBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+TextBlock,textTransform,enum<none|uppercase|lowercase|capitalize>,true,settings,segmented
+ThemeConfig,backgroundColor,string,true,theme,color
+ThemeConfig,backgroundImageUrl,string,true,theme,media
+ThemeConfig,bodyFont,string,true,theme,text
+ThemeConfig,coverImageUrl,string,true,theme,media
+ThemeConfig,gradientDirection,string,true,theme,text
+ThemeConfig,gradientFrom,string,true,theme,text
+ThemeConfig,gradientTo,string,true,theme,text
+ThemeConfig,headingFont,string,true,theme,text
+ThemeConfig,layout,enum<default|minimal|modern|custom>,true,theme,segmented
+ThemeConfig,overlayColor,string,true,theme,color
+ThemeConfig,overlayOpacity,number,true,theme,slider+number(0..1,0.01)
+ThemeConfig,primaryColor,string,true,theme,color
+ThemeConfig,secondaryColor,string,true,theme,color
+ThemeConfig,textColor,string,true,theme,color
+VideoBlock,autoplay,boolean,true,settings,toggle
+VideoBlock,caption,string,true,content,text
+VideoBlock,controls,boolean,true,settings,toggle
+VideoBlock,height,string,true,settings,text (CSS)
+VideoBlock,loop,boolean,true,settings,toggle
+VideoBlock,muted,boolean,true,settings,toggle
+VideoBlock,poster,string,true,settings,text
+VideoBlock,showOnDesktop,boolean,true,settings,toggle
+VideoBlock,showOnLg,boolean,true,settings,toggle
+VideoBlock,showOnMd,boolean,true,settings,toggle
+VideoBlock,showOnMobile,boolean,true,settings,toggle
+VideoBlock,showOnSm,boolean,true,settings,toggle
+VideoBlock,showOnXl,boolean,true,settings,toggle
+VideoBlock,src,string,false,settings,media
+VideoBlock,style.backgroundColor,string,true,styles,color
+VideoBlock,style.backgroundImageUrl,string,true,styles,media
+VideoBlock,style.backgroundPosition,string,true,styles,text (CSS)
+VideoBlock,style.backgroundPositionCustom,string,true,styles,text (CSS)
+VideoBlock,style.backgroundRepeat,string,true,styles,text
+VideoBlock,style.backgroundSize,string,true,styles,text (CSS)
+VideoBlock,style.backgroundSizeCustom,string,true,styles,text (CSS)
+VideoBlock,style.blendMode,string,true,styles,text
+VideoBlock,style.borderRadius,string,true,styles,text (CSS)
+VideoBlock,style.canvasAlign,enum<left|center|right>,true,styles,segmented
+VideoBlock,style.gap,string,true,styles,text
+VideoBlock,style.gradientDirection,string,true,styles,text
+VideoBlock,style.gradientFrom,string,true,styles,text
+VideoBlock,style.gradientTo,string,true,styles,text
+VideoBlock,style.hoverOpacity,number,true,styles,slider+number(0..1,0.01)
+VideoBlock,style.hoverScale,number,true,styles,slider+number
+VideoBlock,style.hoverShadow,string,true,styles,text
+VideoBlock,style.hoverTransitionMs,number,true,styles,number
+VideoBlock,style.imageScale,number,true,styles,slider+number
+VideoBlock,style.marginBottom,string,true,styles,text
+VideoBlock,style.marginLeft,string,true,styles,text
+VideoBlock,style.marginRight,string,true,styles,text
+VideoBlock,style.marginTop,string,true,styles,text
+VideoBlock,style.overlayColor,string,true,styles,color
+VideoBlock,style.overlayOpacity,number,true,styles,slider+number(0..1,0.01)
+VideoBlock,style.padding,string,true,styles,text
+VideoBlock,style.parallax,boolean,true,styles,toggle
+VideoBlock,style.widthResp.desktop,string,true,styles,text (CSS)
+VideoBlock,style.widthResp.mobile,string,true,styles,text (CSS)
+VideoBlock,width,string,true,settings,text (CSS)

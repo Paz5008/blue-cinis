@@ -1,0 +1,2 @@
+BlockType,Tab,Section,Parameter,ControlType,Unit,Min,Max,Step,Default,VisibleIf,Device,Source,DuplicateOf,Notes
+text,Content,Texte,content (HTML),textarea,n/a,,,,

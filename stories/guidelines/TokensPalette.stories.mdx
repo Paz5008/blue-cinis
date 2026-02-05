@@ -1,0 +1,144 @@
+import { Meta, Canvas } from '@storybook/blocks'
+
+<Meta title="Guidelines/Tokens & Palette" />
+
+# Tokens & Palette
+
+Aperçu rapide des principaux tokens de couleur et utilitaires.
+
+## Couleurs de texte
+
+<Canvas>
+  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="p-4 rounded-lg border border-subtle">
+      <div className="text-heading text-lg font-semibold">text-heading</div>
+      <p className="text-heading">Titre en `text-heading`</p>
+    </div>
+    <div className="p-4 rounded-lg border border-subtle">
+      <div className="text-body text-lg font-semibold">text-body</div>
+      <p className="text-body">Texte en `text-body`</p>
+    </div>
+    <div className="p-4 rounded-lg border border-subtle">
+      <div className="text-body-subtle text-lg font-semibold">text-body-subtle</div>
+      <p className="text-body-subtle">Texte en `text-body-subtle`</p>
+    </div>
+    <div className="p-4 rounded-lg border border-subtle">
+      <div className="text-icon-subtle text-lg font-semibold">text-icon-subtle</div>
+      <p className="text-icon-subtle">Icônes / texte secondaire</p>
+    </div>
+  </div>
+</Canvas>
+
+## Accents et fonds
+
+<Canvas>
+  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="p-4 rounded-lg border border-subtle">
+      <div className="text-accent text-lg font-semibold">text-accent</div>
+      <p><span className="text-accent">Lien/CTA (accent)</span></p>
+    </div>
+    <div className="p-4 rounded-lg border border-subtle">
+      <div className="text-accent-hover text-lg font-semibold">text-accent-hover</div>
+      <p><span className="text-accent-hover">Hover (accent)</span></p>
+    </div>
+    <div className="p-4 rounded-lg border border-subtle bg-subtle">
+      <div className="text-heading text-lg font-semibold">bg-subtle</div>
+      <p className="text-body">Fond `bg-subtle` pour sections</p>
+    </div>
+  </div>
+</Canvas>
+
+## Bordures et ombres
+
+<Canvas>
+  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="p-6 rounded-lg border border-subtle shadow-sm">
+      <div className="text-heading font-semibold mb-1">border-subtle + shadow-sm</div>
+      <p className="text-body-subtle">Carte avec ombre légère</p>
+    </div>
+    <div className="p-6 rounded-lg border border-subtle shadow-md">
+      <div className="text-heading font-semibold mb-1">shadow-md</div>
+      <p className="text-body-subtle">Ombre moyenne</p>
+    </div>
+    <div className="p-6 rounded-lg border border-subtle shadow-lg">
+      <div className="text-heading font-semibold mb-1">shadow-lg</div>
+      <p className="text-body-subtle">Ombre forte</p>
+    </div>
+  </div>
+</Canvas>
+
+## Mode sombre (aperçu)
+
+<Canvas>
+  <div className="dark p-6 rounded-lg">
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="p-4 rounded-lg border border-subtle">
+        <div className="text-heading text-lg font-semibold">text-heading</div>
+        <p className="text-heading">Titre en `text-heading`</p>
+      </div>
+      <div className="p-4 rounded-lg border border-subtle">
+        <div className="text-body text-lg font-semibold">text-body</div>
+        <p className="text-body">Texte en `text-body`</p>
+      </div>
+      <div className="p-4 rounded-lg border border-subtle">
+        <div className="text-body-subtle text-lg font-semibold">text-body-subtle</div>
+        <p className="text-body-subtle">Texte en `text-body-subtle`</p>
+      </div>
+      <div className="p-4 rounded-lg border border-subtle">
+        <div className="text-accent text-lg font-semibold">text-accent</div>
+        <p><span className="text-accent">Lien/CTA (accent)</span></p>
+      </div>
+    </div>
+  </div>
+</Canvas>
+
+
+
+## Nuancier thématique
+
+<Canvas>
+  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="p-4 rounded-lg border border-subtle">
+      <div className="text-heading font-semibold mb-2">river-blue</div>
+      <div className="h-16 rounded bg-river-blue border border-subtle" />
+      <p className="mt-2 text-body-subtle text-sm">Classe: bg-river-blue (var(--river-blue))</p>
+    </div>
+    <div className="p-4 rounded-lg border border-subtle">
+      <div className="text-heading font-semibold mb-2">vine-green</div>
+      <div className="h-16 rounded bg-vine-green border border-subtle" />
+      <p className="mt-2 text-body-subtle text-sm">Classe: bg-vine-green (var(--vine-green))</p>
+    </div>
+    <div className="p-4 rounded-lg border border-subtle">
+      <div className="text-heading font-semibold mb-2">tuffeau-sand</div>
+      <div className="h-16 rounded bg-tuffeau-sand border border-subtle" />
+      <p className="mt-2 text-body-subtle text-sm">Classe: bg-tuffeau-sand (var(--tuffeau-sand))</p>
+    </div>
+  </div>
+</Canvas>
+
+
+## Liens & Boutons (états)
+
+<Canvas>
+  <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="p-4 rounded-lg border border-subtle space-y-2">
+      <div className="text-heading font-semibold">Lien (par défaut)</div>
+      <a href="#" className="text-accent">Lien accent</a>
+      <div className="text-heading font-semibold mt-3">Lien (hover simulé)</div>
+      <a href="#" className="text-accent-hover">Lien accent (hover)</a>
+      <div className="text-heading font-semibold mt-3">Lien (focus simulé)</div>
+      <a href="#" className="text-accent ring-2 ring-blue-500 ring-offset-2 rounded px-1">Lien accent (focus)</a>
+    </div>
+    <div className="p-4 rounded-lg border border-subtle space-y-3">
+      <div className="text-heading font-semibold">Bouton accent</div>
+      <button className="inline-flex items-center px-3 py-1.5 rounded-md bg-accent text-black hover:bg-accent-hover transition-colors">CTA</button>
+      <div className="text-heading font-semibold">Bouton outline</div>
+      <button className="inline-flex items-center px-3 py-1.5 rounded-md border border-accent text-accent hover:text-accent-hover hover:border-accent-hover transition-colors">CTA</button>
+    </div>
+    <div className="p-4 rounded-lg border border-subtle space-y-3">
+      <div className="text-heading font-semibold">Badges</div>
+      <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Disponible</span>
+      <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">Vendu</span>
+    </div>
+  </div>
+</Canvas>

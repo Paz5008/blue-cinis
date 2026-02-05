@@ -1,0 +1,10 @@
+{
+  "hero": {
+    "signature": "/hero-background3.avif",
+    "editorialPro": "/hero-background.avif",
+    "minimalClean": "/hero-background.avif",
+    "showcaseDeluxe": "/hero-background2.avif",
+    "portfolioMasonry": "/hero-background2.avif",
+    "boutique": "/hero-background.avif"
+  }
+}

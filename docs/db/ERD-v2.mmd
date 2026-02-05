@@ -1,0 +1,171 @@
+%% Mermaid ER diagram for Loire Gallery v2
+erDiagram
+  USER ||--o| ARTIST : "may_have"
+  USER ||--o| ARTISTPAGE : "customizes"
+  USER {
+    string id PK
+    string email UK
+    string password
+    string name
+    enum role
+    boolean isActive
+    datetime createdAt
+    datetime updatedAt
+  }
+
+  ARTIST ||--o{ ARTWORK : owns
+  ARTIST ||--o{ ORDER : receives
+  ARTIST {
+    string id PK
+    string userId UK
+    string slug UK
+    string name
+    string biography
+    string photoUrl
+    string instagramUrl
+    string facebookUrl
+    string portfolio
+    boolean enableCommerce
+    string stripeAccountId UK
+    boolean allowInternationalShipping
+    int defaultShippingFee
+    int processingTimeDays
+    string deliveryBannerMessage
+    boolean isActive
+    boolean isFeatured
+    datetime createdAt
+    datetime updatedAt
+  }
+
+  CATEGORY ||--o{ ARTWORK : groups
+  CATEGORY {
+    string id PK
+    string slug UK
+    string name UK
+    string parentId FK
+  }
+
+  ARTWORK ||--o{ VARIANT : has
+  ARTWORK ||--o{ RESERVATION : reserves
+  ARTWORK ||--o{ ORDER : sold_in
+  ARTWORK {
+    string id PK
+    string slug UK
+    string artistId FK
+    string categoryId FK
+    string title
+    string imageUrl
+    int price
+    string currency
+    string dimensions
+    int year
+    string description
+    boolean isAvailable
+    datetime reservedUntil
+    datetime createdAt
+    datetime updatedAt
+  }
+
+  VARIANT ||--o{ RESERVATION : has
+  VARIANT ||--o{ ORDER : sold_in
+  VARIANT {
+    string id PK
+    string artworkId FK
+    string name
+    int priceOverride
+    int stockQuantity
+    datetime createdAt
+    datetime updatedAt
+  }
+
+  RESERVATION {
+    string id PK
+    string artworkId FK
+    string variantId FK
+    int quantity
+    enum status
+    string stripeSessionId UK
+    datetime expiresAt
+    datetime createdAt
+    datetime updatedAt
+  }
+
+  ORDER {
+    string id PK
+    string artworkId FK
+    string variantId FK
+    string artistId FK
+    string buyerEmail
+    string buyerName
+    string buyerPhone
+    int amount
+    string currency
+    int tax
+    int shipping
+    int fee
+    int net
+    string stripeSessionId UK
+    string paymentIntentId
+    enum status
+    enum fulfillmentStatus
+    json billingAddress
+    json shippingAddress
+    datetime fulfilledAt
+    datetime createdAt
+    datetime updatedAt
+  }
+
+  ARTISTPAGE {
+    string id PK
+    string userId FK
+    string key
+    json draftContent
+    json publishedContent
+    enum status
+    datetime publishedAt
+    datetime createdAt
+    datetime updatedAt
+  }
+
+  BLOGPOST {
+    string id PK
+    string slug UK
+    string title
+    string content
+    string excerpt
+    string imageUrl
+    datetime publishedAt
+    datetime createdAt
+    datetime updatedAt
+  }
+
+  EVENT {
+    string id PK
+    string title
+    string description
+    string imageUrl
+    string location
+    datetime date
+    datetime createdAt
+    datetime updatedAt
+  }
+
+  LEAD {
+    string id PK
+    string name
+    string email
+    string phone
+    string message
+    string artworkId
+    string artistId
+    datetime createdAt
+  }
+
+  WEBHOOKEVENT {
+    string id PK
+    string provider
+    string type
+    string eventId UK
+    json payload
+    datetime receivedAt
+  }

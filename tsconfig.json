@@ -1,0 +1,87 @@
+{
+  "compilerOptions": {
+    // Niveau d’ECMAScript ciblé
+    "target": "ES2017",
+    // Librairies incluses (DOM, ESNext, etc.)
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    // Autorise les fichiers JS (si besoin)
+    "allowJs": true,
+    // Ignore la vérification des déclarations de types dans node_modules
+    "skipLibCheck": true,
+    // Active le mode strict (recommandé)
+    "strict": true,
+    // Ne génère pas de .js à la compilation (on laisse Next.js gérer)
+    "noEmit": true,
+    // Facilite l’interopérabilité CommonJS / ES Modules
+    "esModuleInterop": true,
+    // Gère le mode de compilation ESnext
+    "module": "esnext",
+    // Depuis TypeScript 5, "bundler" est possible. Si vous rencontrez des soucis,
+    // remplacez-le par "node".
+    "moduleResolution": "bundler",
+    // Autorise l’import de fichiers JSON
+    "resolveJsonModule": true,
+    // Nécessaire pour Next.js en mode strict
+    "isolatedModules": true,
+    // Préserve le JSX (Next.js gère la compilation)
+    "jsx": "preserve",
+    // Optimise les compilations incrémentales
+    "incremental": true,
+    // BaseUrl pour simplifier les imports
+    "baseUrl": ".",
+    // Alias personnalisés (ex. "@/*" -> "./src/*")
+    "paths": {
+      "@/*": [
+        "./src/*",
+        "./*"
+      ],
+      "@/lib/*": [
+        "./src/lib/*",
+        "./lib/*"
+      ],
+      "@/actions/*": [
+        "./actions/*"
+      ],
+      "@/components/*": [
+        "./components/*"
+      ],
+      "@/context/*": [
+        "./context/*"
+      ],
+      "@/types/*": [
+        "./types/*"
+      ]
+    },
+    // Plugin Next.js pour un support TypeScript optimal
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    // Pour charger vos déclarations de types personnalisées (ex. next-auth.d.ts)
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types"
+    ]
+  },
+  "include": [
+    // Fichier généré automatiquement par Next.js
+    "**/*.ts",
+    // Tous les fichiers .ts et .tsx
+    "**/*.tsx",
+    "**/*.mts",
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "scripts/**/*",
+    "test/**/*",
+    "vitest.config.example.ts"
+  ]
+}

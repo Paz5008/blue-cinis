@@ -1,0 +1,47 @@
+# --- Node & dependencies ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Next.js build outputs ---
+.next/
+out/
+dist/
+
+# --- Environnements & secrets ---
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# --- OS & IDE specifics ---
+.DS_Store
+.idea/
+.vscode/
+
+# --- Logs & temps ---
+*.log
+logs
+pids
+*.pid
+*.pid.lock
+*.seed
+tmp/
+tmp.sed/
+*.tmp
+*.bak
+app/globals.css.tmp
+app/sitemap.ts.bak
+tmp/admin-exports/
+
+# --- Prisma ---
+# (Si tu stockes un fichier .env dans /prisma, on l'ignore aussi)
+prisma/.env
+
+# --- Autres cas courants ---
+# (Décommente si tu ne veux pas committer d'images uploadées)
+# public/uploads/
+# Ignore les fichiers de build TS
+*.tsbuildinfo

@@ -1,0 +1,211 @@
+[
+    {
+        "id": "anchor-artist-name",
+        "type": "artistName",
+        "x": 50,
+        "y": 800,
+        "width": 600,
+        "height": 120,
+        "rotation": 0,
+        "zIndex": 10,
+        "style": {
+            "position": "absolute",
+            "hoverScale": 1.02,
+            "hoverTransitionMs": 280,
+            "backgroundColor": "#1d3b62",
+            "color": "#f8fafc",
+            "borderRadius": "14px",
+            "boxShadow": "0 24px 60px rgba(15,23,42,0.2)",
+            "padding": "2rem 3rem",
+            "fontSize": "3.5rem",
+            "fontWeight": "700"
+        },
+        "noise": false,
+        "showOnDesktop": true,
+        "showOnMobile": false,
+        "content": {
+            "tag": "h1"
+        }
+    },
+    {
+        "id": "block-1",
+        "type": "image",
+        "x": 65.78991239763316,
+        "y": 565.7584710466551,
+        "width": 500,
+        "height": 400,
+        "rotation": -2.651720884794287,
+        "zIndex": 7,
+        "style": {
+            "position": "absolute",
+            "hoverScale": 1.06,
+            "hoverTransitionMs": 280,
+            "borderRadius": "0px",
+            "boxShadow": "0 18px 42px rgba(15,23,42,0.18)",
+            "blendMode": "normal"
+        },
+        "noise": false,
+        "showOnDesktop": true,
+        "showOnMobile": false,
+        "content": {
+            "src": "/placeholder-artwork-1.jpg",
+            "altText": "Artwork 1"
+        }
+    },
+    {
+        "id": "block-2",
+        "type": "image",
+        "x": 38.535783174815656,
+        "y": 1032.522401824384,
+        "width": 350,
+        "height": 280,
+        "rotation": 14.373347046001165,
+        "zIndex": 6,
+        "style": {
+            "position": "absolute",
+            "hoverScale": 1.06,
+            "hoverTransitionMs": 280,
+            "borderRadius": "6px",
+            "boxShadow": "0 16px 40px rgba(15,23,42,0.14)",
+            "blendMode": "overlay"
+        },
+        "noise": true,
+        "showOnDesktop": true,
+        "showOnMobile": false,
+        "content": {
+            "src": "/placeholder-artwork-2.jpg",
+            "altText": "Artwork 2"
+        }
+    },
+    {
+        "id": "block-3",
+        "type": "image",
+        "x": 23.47225088162149,
+        "y": 650.5345547511422,
+        "width": 320,
+        "height": 320,
+        "rotation": 6.135731799231284,
+        "zIndex": 4,
+        "style": {
+            "position": "absolute",
+            "hoverScale": 1.06,
+            "hoverTransitionMs": 280,
+            "borderRadius": "50%",
+            "boxShadow": "0 18px 42px rgba(15,23,42,0.18)",
+            "blendMode": "soft-light"
+        },
+        "noise": true,
+        "showOnDesktop": true,
+        "showOnMobile": false,
+        "content": {
+            "src": "/placeholder-artwork-3.jpg",
+            "altText": "Artwork 3"
+        }
+    },
+    {
+        "id": "block-4",
+        "type": "image",
+        "x": 23.52233867678728,
+        "y": 943.3027499812742,
+        "width": 150,
+        "height": 150,
+        "rotation": 28.446933066459636,
+        "zIndex": 2,
+        "style": {
+            "position": "absolute",
+            "hoverScale": 1.06,
+            "hoverTransitionMs": 280,
+            "borderRadius": "16px",
+            "boxShadow": "0 24px 55px rgba(15,23,42,0.28)",
+            "blendMode": "multiply"
+        },
+        "noise": true,
+        "showOnDesktop": true,
+        "showOnMobile": false,
+        "content": {
+            "src": "/sticker-1.png",
+            "altText": "Sticker décoratif"
+        }
+    },
+    {
+        "id": "block-5",
+        "type": "image",
+        "x": 41.55446849920039,
+        "y": 578.1011931799098,
+        "width": 120,
+        "height": 120,
+        "rotation": -6.560248523720134,
+        "zIndex": 1,
+        "style": {
+            "position": "absolute",
+            "hoverScale": 1.06,
+            "hoverTransitionMs": 280,
+            "borderRadius": "6px",
+            "boxShadow": "0 18px 42px rgba(15,23,42,0.18)",
+            "blendMode": "multiply"
+        },
+        "noise": true,
+        "showOnDesktop": true,
+        "showOnMobile": false,
+        "content": {
+            "src": "/sticker-2.png",
+            "altText": "Sticker artistique"
+        }
+    },
+    {
+        "id": "block-6",
+        "type": "text",
+        "x": 40.88409340839988,
+        "y": 362.77436321380577,
+        "width": 280,
+        "height": 120,
+        "rotation": 4.003945470940245,
+        "zIndex": 3,
+        "style": {
+            "position": "absolute",
+            "hoverScale": 1.0782033857430304,
+            "hoverTransitionMs": 280,
+            "backgroundColor": "#2563eb22",
+            "color": "#0f172a",
+            "borderRadius": "14px",
+            "boxShadow": "0 12px 28px rgba(15,23,42,0.12)",
+            "padding": "1rem 1.5rem",
+            "fontSize": "1.2rem",
+            "lineHeight": "1.6"
+        },
+        "noise": true,
+        "showOnDesktop": true,
+        "showOnMobile": false,
+        "content": {
+            "content": "Exploration organique des matières brutes"
+        }
+    },
+    {
+        "id": "block-7",
+        "type": "text",
+        "x": 58.68755069421893,
+        "y": 1116.4640116922124,
+        "width": 320,
+        "height": 100,
+        "rotation": -4.0192666224183675,
+        "zIndex": 3,
+        "style": {
+            "position": "absolute",
+            "hoverScale": 1.05206493578321,
+            "hoverTransitionMs": 280,
+            "backgroundColor": "#14b8a622",
+            "color": "#2a1f15",
+            "borderRadius": "22px",
+            "boxShadow": "0 16px 40px rgba(15,23,42,0.22)",
+            "padding": "1rem 1.5rem",
+            "fontSize": "1.2rem",
+            "lineHeight": "1.6"
+        },
+        "noise": true,
+        "showOnDesktop": true,
+        "showOnMobile": false,
+        "content": {
+            "content": "Une vision éclatée du monde"
+        }
+    }
+]

@@ -1,0 +1,162 @@
+[
+    {
+        "id": "grid-header",
+        "type": "container",
+        "style": {
+            "position": "relative",
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "padding": "4rem 2rem",
+            "backgroundColor": "#f8fafc",
+            "gap": "1.5rem"
+        },
+        "children": [
+            {
+                "id": "artist-name-centered",
+                "type": "artistName",
+                "content": "",
+                "style": {
+                    "fontSize": "3rem",
+                    "fontWeight": "700",
+                    "color": "#0f172a",
+                    "textAlign": "center"
+                }
+            },
+            {
+                "id": "artist-bio-intro",
+                "type": "artistBio",
+                "content": "",
+                "style": {
+                    "fontSize": "1.25rem",
+                    "color": "#64748b",
+                    "textAlign": "center",
+                    "maxWidth": "600px",
+                    "lineHeight": "1.8"
+                }
+            }
+        ]
+    },
+    {
+        "id": "grid-gallery",
+        "type": "container",
+        "style": {
+            "position": "relative",
+            "display": "grid",
+            "gridTemplateColumns": "repeat(2, 1fr)",
+            "gap": "2rem",
+            "padding": "2rem 4rem",
+            "backgroundColor": "#ffffff"
+        },
+        "children": [
+            {
+                "id": "grid-img-1",
+                "type": "image",
+                "content": "",
+                "style": {
+                    "width": "100%",
+                    "aspectRatio": "4/3",
+                    "objectFit": "cover",
+                    "borderRadius": "12px",
+                    "boxShadow": "0 4px 20px rgba(0,0,0,0.08)"
+                }
+            },
+            {
+                "id": "grid-img-2",
+                "type": "image",
+                "content": "",
+                "style": {
+                    "width": "100%",
+                    "aspectRatio": "4/3",
+                    "objectFit": "cover",
+                    "borderRadius": "12px",
+                    "boxShadow": "0 4px 20px rgba(0,0,0,0.08)"
+                }
+            },
+            {
+                "id": "grid-img-3",
+                "type": "image",
+                "content": "",
+                "style": {
+                    "width": "100%",
+                    "aspectRatio": "4/3",
+                    "objectFit": "cover",
+                    "borderRadius": "12px",
+                    "boxShadow": "0 4px 20px rgba(0,0,0,0.08)"
+                }
+            },
+            {
+                "id": "grid-img-4",
+                "type": "image",
+                "content": "",
+                "style": {
+                    "width": "100%",
+                    "aspectRatio": "4/3",
+                    "objectFit": "cover",
+                    "borderRadius": "12px",
+                    "boxShadow": "0 4px 20px rgba(0,0,0,0.08)"
+                }
+            }
+        ]
+    },
+    {
+        "id": "grid-artist-section",
+        "type": "container",
+        "style": {
+            "position": "relative",
+            "display": "flex",
+            "flexDirection": "row",
+            "alignItems": "center",
+            "gap": "3rem",
+            "padding": "4rem",
+            "backgroundColor": "#f1f5f9"
+        },
+        "children": [
+            {
+                "id": "artist-photo-round",
+                "type": "artistPhoto",
+                "content": "",
+                "style": {
+                    "width": "200px",
+                    "height": "200px",
+                    "borderRadius": "50%",
+                    "objectFit": "cover",
+                    "boxShadow": "0 8px 30px rgba(0,0,0,0.12)"
+                }
+            },
+            {
+                "id": "artist-statement",
+                "type": "text",
+                "content": "<p>Découvrez mon univers artistique, mes inspirations et mon processus créatif. Chaque œuvre raconte une histoire unique.</p>",
+                "style": {
+                    "fontSize": "1.125rem",
+                    "color": "#475569",
+                    "lineHeight": "1.8",
+                    "flex": "1"
+                }
+            }
+        ]
+    },
+    {
+        "id": "grid-cta",
+        "type": "container",
+        "style": {
+            "position": "relative",
+            "display": "flex",
+            "justifyContent": "center",
+            "padding": "3rem 2rem",
+            "backgroundColor": "#0f172a"
+        },
+        "children": [
+            {
+                "id": "cta-text",
+                "type": "text",
+                "content": "<p style='color: white; font-size: 1.5rem;'>Contactez-moi pour une commande personnalisée</p>",
+                "style": {
+                    "color": "#ffffff",
+                    "textAlign": "center"
+                }
+            }
+        ]
+    }
+]

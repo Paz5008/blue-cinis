@@ -1,0 +1,217 @@
+# Audit Inspector
+
+## Résumé
+- Paramètres générés: 734
+- Paramètres manquants dans docs/inspector/param-matrix.csv: 734
+- Paramètres obsolètes listés dans le CSV: 1
+- Doublons (même nom de champ final dans un même bloc): 2
+
+## Manquants dans le CSV
+- ArtistBioBlock :: alignment (enum<left|center|right>) → settings/segmented
+- ArtistBioBlock :: color (string) → styles/color
+- ArtistBioBlock :: content (string) → content/text
+- ArtistBioBlock :: fontFamily (string) → styles/text
+- ArtistBioBlock :: fontSize (string) → styles/text
+- ArtistBioBlock :: fontWeight (string) → styles/text
+- ArtistBioBlock :: letterSpacing (string) → settings/text
+- ArtistBioBlock :: lineHeight (string) → settings/text (CSS)
+- ArtistBioBlock :: showOnDesktop (boolean) → settings/toggle
+- ArtistBioBlock :: showOnLg (boolean) → settings/toggle
+- ArtistBioBlock :: showOnMd (boolean) → settings/toggle
+- ArtistBioBlock :: showOnMobile (boolean) → settings/toggle
+- ArtistBioBlock :: showOnSm (boolean) → settings/toggle
+- ArtistBioBlock :: showOnXl (boolean) → settings/toggle
+- ArtistBioBlock :: style.backgroundColor (string) → styles/color
+- ArtistBioBlock :: style.backgroundImageUrl (string) → styles/media
+- ArtistBioBlock :: style.backgroundPosition (string) → styles/text (CSS)
+- ArtistBioBlock :: style.backgroundPositionCustom (string) → styles/text (CSS)
+- ArtistBioBlock :: style.backgroundRepeat (string) → styles/text
+- ArtistBioBlock :: style.backgroundSize (string) → styles/text (CSS)
+- ArtistBioBlock :: style.backgroundSizeCustom (string) → styles/text (CSS)
+- ArtistBioBlock :: style.blendMode (string) → styles/text
+- ArtistBioBlock :: style.borderRadius (string) → styles/text (CSS)
+- ArtistBioBlock :: style.canvasAlign (enum<left|center|right>) → styles/segmented
+- ArtistBioBlock :: style.gap (string) → styles/text
+- ArtistBioBlock :: style.gradientDirection (string) → styles/text
+- ArtistBioBlock :: style.gradientFrom (string) → styles/text
+- ArtistBioBlock :: style.gradientTo (string) → styles/text
+- ArtistBioBlock :: style.hoverOpacity (number) → styles/slider+number(0..1,0.01)
+- ArtistBioBlock :: style.hoverScale (number) → styles/slider+number
+- ArtistBioBlock :: style.hoverShadow (string) → styles/text
+- ArtistBioBlock :: style.hoverTransitionMs (number) → styles/number
+- ArtistBioBlock :: style.imageScale (number) → styles/slider+number
+- ArtistBioBlock :: style.marginBottom (string) → styles/text
+- ArtistBioBlock :: style.marginLeft (string) → styles/text
+- ArtistBioBlock :: style.marginRight (string) → styles/text
+- ArtistBioBlock :: style.marginTop (string) → styles/text
+- ArtistBioBlock :: style.overlayColor (string) → styles/color
+- ArtistBioBlock :: style.overlayOpacity (number) → styles/slider+number(0..1,0.01)
+- ArtistBioBlock :: style.padding (string) → styles/text
+- ArtistBioBlock :: style.parallax (boolean) → styles/toggle
+- ArtistBioBlock :: style.widthResp.desktop (string) → styles/text (CSS)
+- ArtistBioBlock :: style.widthResp.mobile (string) → styles/text (CSS)
+- ArtistBioBlock :: textTransform (enum<none|uppercase|lowercase|capitalize>) → settings/segmented
+- ArtistNameBlock :: alignment (enum<left|center|right>) → settings/segmented
+- ArtistNameBlock :: color (string) → styles/color
+- ArtistNameBlock :: fontFamily (string) → styles/text
+- ArtistNameBlock :: fontSize (string) → styles/text
+- ArtistNameBlock :: fontWeight (string) → styles/text
+- ArtistNameBlock :: letterSpacing (string) → settings/text
+- ArtistNameBlock :: lineHeight (string) → settings/text (CSS)
+- ArtistNameBlock :: showOnDesktop (boolean) → settings/toggle
+- ArtistNameBlock :: showOnLg (boolean) → settings/toggle
+- ArtistNameBlock :: showOnMd (boolean) → settings/toggle
+- ArtistNameBlock :: showOnMobile (boolean) → settings/toggle
+- ArtistNameBlock :: showOnSm (boolean) → settings/toggle
+- ArtistNameBlock :: showOnXl (boolean) → settings/toggle
+- ArtistNameBlock :: style.backgroundColor (string) → styles/color
+- ArtistNameBlock :: style.backgroundImageUrl (string) → styles/media
+- ArtistNameBlock :: style.backgroundPosition (string) → styles/text (CSS)
+- ArtistNameBlock :: style.backgroundPositionCustom (string) → styles/text (CSS)
+- ArtistNameBlock :: style.backgroundRepeat (string) → styles/text
+- ArtistNameBlock :: style.backgroundSize (string) → styles/text (CSS)
+- ArtistNameBlock :: style.backgroundSizeCustom (string) → styles/text (CSS)
+- ArtistNameBlock :: style.blendMode (string) → styles/text
+- ArtistNameBlock :: style.borderRadius (string) → styles/text (CSS)
+- ArtistNameBlock :: style.canvasAlign (enum<left|center|right>) → styles/segmented
+- ArtistNameBlock :: style.gap (string) → styles/text
+- ArtistNameBlock :: style.gradientDirection (string) → styles/text
+- ArtistNameBlock :: style.gradientFrom (string) → styles/text
+- ArtistNameBlock :: style.gradientTo (string) → styles/text
+- ArtistNameBlock :: style.hoverOpacity (number) → styles/slider+number(0..1,0.01)
+- ArtistNameBlock :: style.hoverScale (number) → styles/slider+number
+- ArtistNameBlock :: style.hoverShadow (string) → styles/text
+- ArtistNameBlock :: style.hoverTransitionMs (number) → styles/number
+- ArtistNameBlock :: style.imageScale (number) → styles/slider+number
+- ArtistNameBlock :: style.marginBottom (string) → styles/text
+- ArtistNameBlock :: style.marginLeft (string) → styles/text
+- ArtistNameBlock :: style.marginRight (string) → styles/text
+- ArtistNameBlock :: style.marginTop (string) → styles/text
+- ArtistNameBlock :: style.overlayColor (string) → styles/color
+- ArtistNameBlock :: style.overlayOpacity (number) → styles/slider+number(0..1,0.01)
+- ArtistNameBlock :: style.padding (string) → styles/text
+- ArtistNameBlock :: style.parallax (boolean) → styles/toggle
+- ArtistNameBlock :: style.widthResp.desktop (string) → styles/text (CSS)
+- ArtistNameBlock :: style.widthResp.mobile (string) → styles/text (CSS)
+- ArtistNameBlock :: tag (enum<h1|h2|h3>) → settings/segmented
+- ArtistNameBlock :: textTransform (enum<none|uppercase|lowercase|capitalize>) → settings/segmented
+- ArtistPhotoBlock :: alignment (enum<left|center|right>) → settings/segmented
+- ArtistPhotoBlock :: objectFit (enum<none|cover|contain|fill|scale-down>) → settings/segmented
+- ArtistPhotoBlock :: objectPosition (string) → settings/text (CSS)
+- ArtistPhotoBlock :: shapePreset (enum<square|rounded|soft|circle>) → settings/segmented
+- ArtistPhotoBlock :: showOnDesktop (boolean) → settings/toggle
+- ArtistPhotoBlock :: showOnLg (boolean) → settings/toggle
+- ArtistPhotoBlock :: showOnMd (boolean) → settings/toggle
+- ArtistPhotoBlock :: showOnMobile (boolean) → settings/toggle
+- ArtistPhotoBlock :: showOnSm (boolean) → settings/toggle
+- ArtistPhotoBlock :: showOnXl (boolean) → settings/toggle
+- ArtistPhotoBlock :: size (enum<small|medium|large|full>) → settings/segmented
+- ArtistPhotoBlock :: style.backgroundColor (string) → styles/color
+- ArtistPhotoBlock :: style.backgroundImageUrl (string) → styles/media
+- ArtistPhotoBlock :: style.backgroundPosition (string) → styles/text (CSS)
+- ArtistPhotoBlock :: style.backgroundPositionCustom (string) → styles/text (CSS)
+- ArtistPhotoBlock :: style.backgroundRepeat (string) → styles/text
+- ArtistPhotoBlock :: style.backgroundSize (string) → styles/text (CSS)
+- ArtistPhotoBlock :: style.backgroundSizeCustom (string) → styles/text (CSS)
+- ArtistPhotoBlock :: style.blendMode (string) → styles/text
+- ArtistPhotoBlock :: style.borderRadius (string) → styles/text (CSS)
+- ArtistPhotoBlock :: style.canvasAlign (enum<left|center|right>) → styles/segmented
+- ArtistPhotoBlock :: style.gap (string) → styles/text
+- ArtistPhotoBlock :: style.gradientDirection (string) → styles/text
+- ArtistPhotoBlock :: style.gradientFrom (string) → styles/text
+- ArtistPhotoBlock :: style.gradientTo (string) → styles/text
+- ArtistPhotoBlock :: style.hoverOpacity (number) → styles/slider+number(0..1,0.01)
+- ArtistPhotoBlock :: style.hoverScale (number) → styles/slider+number
+- ArtistPhotoBlock :: style.hoverShadow (string) → styles/text
+- ArtistPhotoBlock :: style.hoverTransitionMs (number) → styles/number
+- ArtistPhotoBlock :: style.imageScale (number) → styles/slider+number
+- ArtistPhotoBlock :: style.marginBottom (string) → styles/text
+- ArtistPhotoBlock :: style.marginLeft (string) → styles/text
+- ArtistPhotoBlock :: style.marginRight (string) → styles/text
+- ArtistPhotoBlock :: style.marginTop (string) → styles/text
+- ArtistPhotoBlock :: style.overlayColor (string) → styles/color
+- ArtistPhotoBlock :: style.overlayOpacity (number) → styles/slider+number(0..1,0.01)
+- ArtistPhotoBlock :: style.padding (string) → styles/text
+- ArtistPhotoBlock :: style.parallax (boolean) → styles/toggle
+- ArtistPhotoBlock :: style.widthResp.desktop (string) → styles/text (CSS)
+- ArtistPhotoBlock :: style.widthResp.mobile (string) → styles/text (CSS)
+- ArtworkListBlock :: cardBackgroundColor (string) → styles/color
+- ArtworkListBlock :: cardBackgroundImageUrl (string) → styles/media
+- ArtworkListBlock :: cardBorderRadius (string) → styles/text (CSS)
+- ArtworkListBlock :: cardBoxShadow (string) → styles/text
+- ArtworkListBlock :: cardPadding (string) → settings/text
+- ArtworkListBlock :: cardPreset (enum<default|minimal|bordered|elevated>) → settings/segmented
+- ArtworkListBlock :: cardTextColor (string) → styles/color
+- ArtworkListBlock :: columnsDesktop (number) → settings/slider+number
+- ArtworkListBlock :: columnsMobile (number) → settings/slider+number
+- ArtworkListBlock :: gap (number) → settings/slider+number
+- ArtworkListBlock :: layout (enum<grid|carousel>) → settings/segmented
+- ArtworkListBlock :: limit (number) → settings/number
+- ArtworkListBlock :: mode (enum<manual|query>) → settings/segmented
+- ArtworkListBlock :: pageSize (number) → settings/number
+- ArtworkListBlock :: paginationType (enum<none|paginate|loadMore>) → settings/segmented
+- ArtworkListBlock :: query.categoryIds (unknown) → content/text
+- ArtworkListBlock :: query.priceMax (number) → content/number
+- ArtworkListBlock :: query.priceMin (number) → content/number
+- ArtworkListBlock :: query.search (string) → content/text
+- ArtworkListBlock :: query.yearMax (number) → content/number
+- ArtworkListBlock :: query.yearMin (number) → content/number
+- ArtworkListBlock :: selection (unknown) → settings/text
+- ArtworkListBlock :: showArtist (boolean) → settings/toggle
+- ArtworkListBlock :: showAvailability (boolean) → settings/toggle
+- ArtworkListBlock :: showDescription (boolean) → settings/toggle
+- ArtworkListBlock :: showDimensions (boolean) → settings/toggle
+- ArtworkListBlock :: showOnDesktop (boolean) → settings/toggle
+- ArtworkListBlock :: showOnLg (boolean) → settings/toggle
+- ArtworkListBlock :: showOnMd (boolean) → settings/toggle
+- ArtworkListBlock :: showOnMobile (boolean) → settings/toggle
+- ArtworkListBlock :: showOnSm (boolean) → settings/toggle
+- ArtworkListBlock :: showOnXl (boolean) → settings/toggle
+- ArtworkListBlock :: showPrice (boolean) → settings/toggle
+- ArtworkListBlock :: showTitle (boolean) → settings/toggle
+- ArtworkListBlock :: showYear (boolean) → settings/toggle
+- ArtworkListBlock :: sortBy (enum<manual|title|price|year|createdAt>) → settings/segmented
+- ArtworkListBlock :: sortOrder (enum<asc|desc>) → settings/segmented
+- ArtworkListBlock :: style.backgroundColor (string) → styles/color
+- ArtworkListBlock :: style.backgroundImageUrl (string) → styles/media
+- ArtworkListBlock :: style.backgroundPosition (string) → styles/text (CSS)
+- ArtworkListBlock :: style.backgroundPositionCustom (string) → styles/text (CSS)
+- ArtworkListBlock :: style.backgroundRepeat (string) → styles/text
+- ArtworkListBlock :: style.backgroundSize (string) → styles/text (CSS)
+- ArtworkListBlock :: style.backgroundSizeCustom (string) → styles/text (CSS)
+- ArtworkListBlock :: style.blendMode (string) → styles/text
+- ArtworkListBlock :: style.borderRadius (string) → styles/text (CSS)
+- ArtworkListBlock :: style.canvasAlign (enum<left|center|right>) → styles/segmented
+- ArtworkListBlock :: style.gap (string) → styles/text
+- ArtworkListBlock :: style.gradientDirection (string) → styles/text
+- ArtworkListBlock :: style.gradientFrom (string) → styles/text
+- ArtworkListBlock :: style.gradientTo (string) → styles/text
+- ArtworkListBlock :: style.hoverOpacity (number) → styles/slider+number(0..1,0.01)
+- ArtworkListBlock :: style.hoverScale (number) → styles/slider+number
+- ArtworkListBlock :: style.hoverShadow (string) → styles/text
+- ArtworkListBlock :: style.hoverTransitionMs (number) → styles/number
+- ArtworkListBlock :: style.imageScale (number) → styles/slider+number
+- ArtworkListBlock :: style.marginBottom (string) → styles/text
+- ArtworkListBlock :: style.marginLeft (string) → styles/text
+- ArtworkListBlock :: style.marginRight (string) → styles/text
+- ArtworkListBlock :: style.marginTop (string) → styles/text
+- ArtworkListBlock :: style.overlayColor (string) → styles/color
+- ArtworkListBlock :: style.overlayOpacity (number) → styles/slider+number(0..1,0.01)
+- ArtworkListBlock :: style.padding (string) → styles/text
+- ArtworkListBlock :: style.parallax (boolean) → styles/toggle
+- ArtworkListBlock :: style.widthResp.desktop (string) → styles/text (CSS)
+- ArtworkListBlock :: style.widthResp.mobile (string) → styles/text (CSS)
+- BaseBlock :: showOnDesktop (boolean) → settings/toggle
+- BaseBlock :: showOnLg (boolean) → settings/toggle
+- BaseBlock :: showOnMd (boolean) → settings/toggle
+- BaseBlock :: showOnMobile (boolean) → settings/toggle
+- BaseBlock :: showOnSm (boolean) → settings/toggle
+- BaseBlock :: showOnXl (boolean) → settings/toggle
+… (534 de plus)
+
+## Obsolètes (présents dans CSV, absents du schéma)
+- text :: content (HTML)
+
+## Doublons par bloc
+- ArtworkListBlock: gap ×2
+- OeuvreBlock: gap ×2

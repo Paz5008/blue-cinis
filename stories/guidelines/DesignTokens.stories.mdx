@@ -1,0 +1,18 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="Guidelines/Design tokens & Typo" />
+
+# Design tokens & Typo
+
+- Headings: use `SectionTitle` (h1/h2/h3) with Playfair.
+- Body: use `BodyText` with Inter.
+- Fluid sizes via CSS clamp are baked into `.section-title`, `.sub-title`, `.body-text` and utilities `.text-fluid-*`.
+- Colors: `text-heading`, `text-body`, `text-body-subtle`, icons via `text-icon-subtle`, accents via `text-accent`.
+- Sections: `py-16`, content container: `.container mx-auto px-4 sm:px-6 lg:px-8`.
+
+## Components
+
+- Reuse SectionTitle/SubTitle/BodyText for hierarchy.
+- Cards (Artwork/Event): use SubTitle for titles (line-clamp), BodyText for excerpts/meta.
+- Respect prefers-reduced-motion; avoid autoplay when set.
+

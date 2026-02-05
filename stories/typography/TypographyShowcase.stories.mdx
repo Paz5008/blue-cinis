@@ -1,0 +1,70 @@
+import { Meta, Canvas, Story } from '@storybook/blocks'
+import { SectionTitle, SubTitle, BodyText } from '../../components/typography'
+
+<Meta title="Typography/Showcase" />
+
+# Typography Showcase
+
+Aperçu visuel des titres (h1–h3) et du texte de corps, avec espacements recommandés.
+
+## H1 / H2 / H3
+
+<Canvas>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div>
+      <SectionTitle as="h1" className="mb-3">Titre de page (H1)</SectionTitle>
+      <BodyText as="p" className="text-body-subtle">
+        Texte d’introduction optionnel sous le H1. Utiliser BodyText pour la cohérence (line-height, taille fluide).
+      </BodyText>
+    </div>
+    <div>
+      <SectionTitle as="h2" className="mb-3">Titre de section (H2)</SectionTitle>
+      <BodyText as="p">
+        Paragraphe standard. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor.
+      </BodyText>
+    </div>
+    <div>
+      <SubTitle as="h3" className="mb-2">Sous-titre (H3)</SubTitle>
+      <BodyText as="p">
+        Paragraphe standard sous H3. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate.
+      </BodyText>
+    </div>
+  </div>
+</Canvas>
+
+## Paragraphes et rythmes
+
+<Canvas>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <SectionTitle as="h2" className="mb-6">Rythme vertical</SectionTitle>
+    <div className="space-y-4 max-w-prose">
+      <BodyText as="p">
+        Utiliser des espacements cohérents: py-16 pour les sections, mb-6/mb-8 sous les titres, et line-height confortable via BodyText.
+      </BodyText>
+      <BodyText as="p">
+        Longueur de ligne recommandée: 65–75 caractères pour les paragraphes. Appliquer <code>max-w-prose</code> si besoin.
+      </BodyText>
+      <BodyText as="p">
+        Couleurs: <code>text-heading</code> pour les titres, <code>text-body</code> pour le texte, <code>text-body-subtle</code> pour le secondaire.
+      </BodyText>
+    </div>
+  </div>
+</Canvas>
+
+
+
+## Aperçu Dark Mode
+
+<Canvas>
+  <div className="dark p-6 rounded-lg">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-6">
+      <SectionTitle as="h2" className="mb-3">Mode sombre</SectionTitle>
+      <BodyText as="p" className="text-body">
+        Cette section simule le mode sombre en appliquant la classe <code>dark</code> localement. Les couleurs et variables sont héritées.
+      </BodyText>
+      <SubTitle as="h3" className="mb-2">Sous-titre</SubTitle>
+      <BodyText as="p" className="text-body-subtle">Texte secondaire en mode sombre.</BodyText>
+    </div>
+  </div>
+  
+</Canvas>

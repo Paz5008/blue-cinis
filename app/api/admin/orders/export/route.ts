@@ -1,0 +1,193 @@
+import { NextRequest, NextResponse, after } from 'next/server'
+import type { Prisma } from '@prisma/client'
+import { prisma } from '@/lib/prisma'
+import { ensureAdminSession } from '@/lib/adminGuard'
+import { recordAdminAuditLog } from '@/lib/audit'
+import { ADMIN_EXPORT_LIMIT, buildOrderQuery, buildOrdersCsv, resolveOrderFilters } from '@/lib/adminFilters'
+import { serializeExportJob } from '@/lib/adminExports'
+import { logger } from '@/lib/logger'
+import { persistAdminExportFile } from '@/lib/exportStorage'
+
+export async function POST(req: NextRequest) {
+  const session = await ensureAdminSession()
+  if (!session) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  }
+
+  const filters = resolveOrderFilters(resolveFiltersFromBody(await req.json().catch(() => ({}))))
+  const auditContext = cloneAuditContext(req)
+
+  const job = await prisma.adminExportJob.create({
+    data: {
+      type: 'orders_csv',
+      status: 'pending',
+      filters: snapshotFilters(filters),
+      triggeredById: typeof session.user?.id === 'string' ? session.user.id : null,
+      triggeredByEmail: session.user?.email ?? null,
+    },
+  })
+
+  await queueOrderExportJob(job.id, filters, session, auditContext, runExportsInline)
+
+  return NextResponse.json({ job: serializeExportJob(job) })
+}
+
+function resolveFiltersFromBody(body: unknown): Record<string, string> {
+  const raw: Record<string, string> = {}
+  if (!body || typeof body !== 'object') return raw
+  const candidate = (body as { filters?: Record<string, unknown> }).filters
+  if (!candidate || typeof candidate !== 'object') return raw
+  if (typeof candidate.status === 'string') raw.status = candidate.status
+  if (typeof candidate.opsStatus === 'string') raw.opsStatus = candidate.opsStatus
+  if (typeof candidate.fulfillment === 'string') raw.fulfillment = candidate.fulfillment
+  if (typeof candidate.from === 'string') raw.from = candidate.from
+  if (typeof candidate.to === 'string') raw.to = candidate.to
+  if (typeof candidate.sort === 'string') raw.sort = candidate.sort
+  if (typeof candidate.q === 'string') raw.q = candidate.q
+  if (candidate.showSensitive) raw.sensitive = 'full'
+  return raw
+}
+
+function snapshotFilters(filters: ReturnType<typeof resolveOrderFilters>): Prisma.JsonObject {
+  return {
+    q: filters.q || null,
+    status: filters.status || null,
+    opsStatus: filters.opsStatus || null,
+    fulfillment: filters.fulfillment || null,
+    from: filters.from || null,
+    to: filters.to || null,
+    sort: filters.sort,
+    includeSensitive: filters.includeSensitive,
+  }
+}
+
+const runExportsInline = process.env.NODE_ENV === 'test'
+
+async function queueOrderExportJob(
+  jobId: string,
+  filters: ReturnType<typeof resolveOrderFilters>,
+  session: NonNullable<Awaited<ReturnType<typeof ensureAdminSession>>>,
+  auditContext: { headers: Headers; ip?: string | null },
+  inline = false,
+) {
+  const execute = async () => {
+    try {
+      await runOrderExportJob(jobId, filters, session, auditContext)
+    } catch (error) {
+      logger.error({ jobId, error }, 'orders_export_job_unhandled')
+    }
+  }
+  if (inline) {
+    await execute()
+    return
+  }
+  after(() => {
+    execute()
+  })
+}
+
+async function runOrderExportJob(
+  jobId: string,
+  filters: ReturnType<typeof resolveOrderFilters>,
+  session: NonNullable<Awaited<ReturnType<typeof ensureAdminSession>>>,
+  auditContext: { headers: Headers; ip?: string | null },
+) {
+  await prisma.adminExportJob.update({
+    where: { id: jobId },
+    data: { status: 'processing' },
+  })
+  const { where, orderBy } = buildOrderQuery(filters)
+
+  try {
+    const rows = await prisma.order.findMany({
+      where,
+      orderBy,
+      take: ADMIN_EXPORT_LIMIT,
+      select: {
+        id: true,
+        artworkId: true,
+        artistId: true,
+        buyerEmail: true,
+        buyerName: true,
+        buyerPhone: true,
+        amount: true,
+        currency: true,
+        fee: true,
+        tax: true,
+        shipping: true,
+        net: true,
+        stripeSessionId: true,
+        paymentIntentId: true,
+        status: true,
+        opsStatus: true,
+        fulfillmentStatus: true,
+        fulfilledAt: true,
+        createdAt: true,
+        nextActionAt: true,
+      },
+    })
+
+    const csv = buildOrdersCsv(rows, { includeSensitive: filters.includeSensitive })
+    const fileName = `orders-${new Date().toISOString().slice(0, 10)}.csv`
+    const mimeType = 'text/csv; charset=utf-8'
+    const storedFile = await persistAdminExportFile({
+      jobId,
+      fileName,
+      mimeType,
+      buffer: Buffer.from(csv, 'utf-8'),
+    })
+    const updated = await prisma.adminExportJob.update({
+      where: { id: jobId },
+      data: {
+        status: 'ready',
+        readyAt: new Date(),
+        fileName,
+        fileMimeType: mimeType,
+        fileSize: storedFile.size,
+        fileChecksum: storedFile.checksum,
+        fileStorageProvider: storedFile.provider,
+        fileStorageKey: storedFile.key,
+        fileStorageUrl: storedFile.url || null,
+      },
+    })
+
+    await recordAdminAuditLog({
+      action: 'orders.export.async',
+      resource: jobId,
+      session,
+      request: auditContext,
+      metadata: {
+        filters: {
+          q: filters.q || null,
+          status: filters.status || null,
+          opsStatus: filters.opsStatus || null,
+          fulfillment: filters.fulfillment || null,
+          from: Boolean(filters.from),
+          to: Boolean(filters.to),
+        },
+        sensitiveMode: filters.includeSensitive ? 'full' : 'masked',
+        rows: rows.length,
+      },
+    })
+    return updated
+  } catch (error) {
+    await prisma.adminExportJob.update({
+      where: { id: jobId },
+      data: { status: 'error', errorMessage: 'Génération impossible' },
+    })
+    await recordAdminAuditLog({
+      action: 'orders.export.async',
+      resource: jobId,
+      session,
+      request: auditContext,
+      status: 'error',
+    })
+    throw error
+  }
+}
+
+function cloneAuditContext(req: NextRequest) {
+  const headers = new Headers(req.headers)
+  const ip = (req as any)?.ip ?? null
+  return { headers, ip }
+}
