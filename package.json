@@ -41,7 +41,14 @@
     "db:up": "docker compose up -d db",
     "db:down": "docker compose down",
     "db:logs": "docker compose logs -f db",
-    "db:migrate:v2": "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/migrate-to-v2.ts"
+    "db:migrate:v2": "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/migrate-to-v2.ts",
+    "deploy": "bash scripts/deploy.sh",
+    "deploy:prod": "bash scripts/deploy.sh production",
+    "deploy:staging": "bash scripts/deploy.sh staging",
+    "backup": "ts-node scripts/backup.ts",
+    "backup:s3": "AWS_BACKUP_BUCKET=1 ts-node scripts/backup.ts",
+    "stripe:onboard": "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/stripe-onboard.ts",
+    "onboard:artist": "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/onboard-artist.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^3.0.43",

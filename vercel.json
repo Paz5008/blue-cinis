@@ -3,6 +3,18 @@
     {
       "path": "/api/cron/cleanup-reservations",
       "schedule": "*/10 * * * *"
+    },
+    {
+      "path": "/api/cron/daily-cleanup",
+      "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/cron/stripe-sync",
+      "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/cron/alerts",
+      "schedule": "0 9 * * *"
     }
   ]
 }
