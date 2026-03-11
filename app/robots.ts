@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-import { getSitemapBaseUrl } from '../lib/sitemap';
+import { getSitemapBaseUrl } from '@/lib/sitemap';
 
 export default function robots(): MetadataRoute.Robots {
   const base = getSitemapBaseUrl();

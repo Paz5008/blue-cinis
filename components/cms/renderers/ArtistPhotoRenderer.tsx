@@ -54,7 +54,12 @@ export const ArtistPhotoRenderer: React.FC<BlockRendererProps> = ({ block, conte
                     src={photoSrc}
                     alt={photoAlt || ""}
                     className={hasCustomSize ? "" : "w-full"}
-                    style={{ ...imgStyle, ...extraImgStyle }}
+                    style={{
+                        ...imgStyle,
+                        ...extraImgStyle,
+                        // Empêche la photo de prendre tout le viewport si pas de taille définie
+                        ...(hasCustomSize ? {} : { maxHeight: '420px', objectFit: 'cover' }),
+                    }}
                     loading="lazy"
                 />
             ) : (

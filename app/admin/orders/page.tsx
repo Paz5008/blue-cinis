@@ -7,6 +7,7 @@ import type { OrderOpsStatus } from '@/lib/workflows'
 import { buildOrderQuery, resolveOrderFilters } from '@/lib/adminFilters'
 import OrdersClient from './_components/OrdersClient'
 import { validateMfaToken } from '@/lib/mfa'
+import { serializeExportJob } from '@/lib/adminExports'
 
 type SearchParams = Record<string, string | string[] | undefined>
 
@@ -97,6 +98,14 @@ export default async function AdminOrdersPage({ searchParams }: { searchParams: 
     }
   })
 
+  // Fetch initial export jobs
+  const rawJobs = await prisma.adminExportJob.findMany({
+    where: { type: 'orders_csv' },
+    orderBy: { createdAt: 'desc' },
+    take: 6,
+  })
+  const initialExportJobs = rawJobs.map(serializeExportJob)
+
   await recordAdminAuditLog({
     action: 'orders.list',
     resource: `orders?page=${filters.page}`,
@@ -128,6 +137,7 @@ export default async function AdminOrdersPage({ searchParams }: { searchParams: 
         sort: filters.sort,
         showSensitive: includeSensitive,
       }}
+      initialExportJobs={initialExportJobs}
     />
   )
 }

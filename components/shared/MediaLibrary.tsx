@@ -415,7 +415,7 @@ export default function MediaLibrary({
           ))}
         </div>
         <div className="mt-8 rounded-lg bg-blue-50 p-4 text-sm text-blue-700">
-          <p><strong>Note :</strong> Ces images sont fournies par la Galerie Loire pour embellir vos mises en page. Elles sont libres de droits pour votre usage sur la plateforme.</p>
+          <p><strong>Note :</strong> Ces images sont fournies par Blue Cinis pour embellir vos mises en page. Elles sont libres de droits pour votre usage sur la plateforme.</p>
         </div>
       </div>
     );
@@ -462,7 +462,7 @@ export default function MediaLibrary({
                 className={`px-4 py-2 transition ${tab === "shared" ? "bg-white text-gray-900 shadow" : "text-gray-500"}`}
                 onClick={() => setTab("shared")}
               >
-                Galerie Loire
+                Blue Cinis
               </button>
             </nav>
             <button

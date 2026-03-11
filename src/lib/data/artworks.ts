@@ -121,7 +121,7 @@ export const getFeaturedArtworks = unstable_cache(
 export const FALLBACK_FEATURED_ARTWORKS: FeaturedArtwork[] = [
   {
     id: "fallback-artwork-hero",
-    title: "Reflets de Loire",
+    title: "Reflets d'Azur",
     imageUrl: "/liam-work1.webp",
     price: 1200,
     artistId: "fallback-artist-liam",
@@ -135,7 +135,7 @@ export const FALLBACK_FEATURED_ARTWORKS: FeaturedArtwork[] = [
   },
   {
     id: "fallback-artwork-dawn",
-    title: "Aurore sur la Loire",
+    title: "Aurore Céleste",
     imageUrl: "/aurore-work1.webp",
     price: 980,
     artistId: "fallback-artist-aurore",

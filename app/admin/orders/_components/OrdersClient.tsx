@@ -83,6 +83,7 @@ type Filters = {
 type Props = {
   data: OrdersResponse;
   filters: Filters;
+  initialExportJobs: AdminExportJobDTO[];
 };
 
 type OrderDetailPayload = {
@@ -90,7 +91,7 @@ type OrderDetailPayload = {
   timeline: WorkflowActivityDTO[];
 };
 
-export default function OrdersClient({ data, filters }: Props) {
+export default function OrdersClient({ data, filters, initialExportJobs }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const { addToast } = useToast();
@@ -105,7 +106,7 @@ export default function OrdersClient({ data, filters }: Props) {
   const [refundTarget, setRefundTarget] = useState<Order | null>(null);
   const [formState, setFormState] = useState(filters);
   const [isPending, startTransition] = useTransition();
-  const [exportJobs, setExportJobs] = useState<AdminExportJobDTO[]>([]);
+  const [exportJobs, setExportJobs] = useState<AdminExportJobDTO[]>(initialExportJobs);
   const [exportLoading, setExportLoading] = useState(false);
   const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
   const [panelData, setPanelData] = useState<OrderDetailPayload | null>(null);
@@ -135,10 +136,6 @@ export default function OrdersClient({ data, filters }: Props) {
       fetchOrdersFromApi(true);
     }
   }, [data, formState.showSensitive, mfaToken]);
-
-  useEffect(() => {
-    refreshExportJobs();
-  }, []);
 
   const totalPages = useMemo(
     () => Math.max(1, Math.ceil((listInfo.total || 0) / (listInfo.pageSize || 20))),

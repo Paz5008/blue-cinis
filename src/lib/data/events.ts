@@ -21,10 +21,10 @@ const MARCHE_EVENT_IMAGE = "/hero-background3.avif";
 export const FALLBACK_UPCOMING_EVENTS: UpcomingEvent[] = [
   {
     id: "fallback-event-1",
-    title: "Rencontre à la Galerie Loire",
+    title: "Rencontre à la Galerie Blue Cinis",
     description: "Une soirée intimiste pour découvrir les nouvelles séries des artistes résidents.",
     date: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(),
-    location: "Nantes",
+    location: "Nevers",
     imageUrl: "/event.webp",
   },
   {
@@ -37,7 +37,7 @@ export const FALLBACK_UPCOMING_EVENTS: UpcomingEvent[] = [
   },
   {
     id: "fallback-event-3",
-    title: "Vernissage « Lumières de Loire »",
+    title: "Vernissage « Lumières d'Atelier »",
     description: "Un accrochage mêlant peintures et sculptures inspirées du fleuve.",
     date: new Date(Date.now() + 17 * 24 * 60 * 60 * 1000).toISOString(),
     location: "Tours",

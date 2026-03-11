@@ -13,7 +13,7 @@ export default async function DashboardArtistLayout({
 }) {
     const session = await auth();
 
-    if (!session || (session.user as any).role !== "artist") {
+    if (!session?.user?.role || session.user.role !== "artist") {
         redirect("/auth/signin");
     }
 

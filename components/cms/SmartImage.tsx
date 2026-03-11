@@ -45,7 +45,12 @@ export const SmartImage = ({ context, src, alt, className, style, loading, width
             width={w}
             height={h}
             className={className}
-            style={{ ...style, width: '100%', height: 'auto' }} // responsive override
+            style={{
+                width: '100%',
+                height: 'auto',
+                // Les styles passés en prop ont la priorité (ex: maxHeight, objectFit)
+                ...style,
+            }}
             loading={loading}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />

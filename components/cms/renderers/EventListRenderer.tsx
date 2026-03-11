@@ -7,7 +7,7 @@ import { composeBlockStyle } from "@/lib/cms/style";
 export const EventListRenderer: React.FC<BlockRendererProps> = ({ block, context, style: injectedStyle }) => {
     const { sanitize } = context;
     const baseStyle = composeBlockStyle(block.style || {});
-    const accentColor = block.accentColor || "#3b82f6";
+    const accentColor = block.accentColor || "var(--accent, currentColor)";
 
     // 1. Data Prep
     let events = Array.isArray(block.events) ? block.events : [];

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, m } from "framer-motion";
+import { useScroll, useTransform, m } from "framer-motion";
 
 const SERVICE_STEPS = [
   {

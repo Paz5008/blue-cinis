@@ -3,7 +3,7 @@ import { getFilteredArtworks, getCategories, getArtists } from "@/lib/db/queries
 import GalleryPageClient from "@/components/features/gallery/GalleryPageClient"
 
 export const metadata = {
-  title: "Collection | Loire Gallery",
+  title: "Collection | Blue Cinis",
   description: "Explore our curated selection of contemporary artworks from emerging and established artists.",
 }
 

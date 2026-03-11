@@ -13,7 +13,7 @@ import StripeTestPaymentButton from '@/components/dashboard/StripeTestPaymentBut
 import CopyLinkButton from '@/components/ui/CopyLinkButton';
 import ArtistPublicProfile from '@/components/artist/ArtistPublicProfile';
 import { prisma } from '@/lib/prisma';
-import { Bell, CreditCard, Globe, LifeBuoy, Share2, Store, Truck } from 'lucide-react';
+import { Bell, CreditCard, Globe, LifeBuoy, Share2, Store, Truck, Sparkles } from 'lucide-react';
 import SettingsChecklistCard from '@/components/dashboard/SettingsChecklistCard';
 
 async function getArtist(userId: string) {
@@ -142,6 +142,11 @@ export default async function SettingsPage() {
   if (!session || (session.user as any).role !== 'artist') {
     redirect('/');
   }
+  const userTokens = await prisma.user.findUnique({
+    where: { id: session.user.id },
+    select: { aiTokens: true }
+  });
+  const aiTokens = userTokens?.aiTokens ?? 0;
   const artist = await getArtist(session.user.id);
   const checklist = await getChecklist(session.user.id);
   const featureStateUnknown = artist?.enableCommerce == null || artist?.enableLeads == null;
@@ -161,6 +166,7 @@ export default async function SettingsPage() {
   const progress = Math.round((completed / totalSteps) * 100);
 
   const navItems = [
+    { id: 'abonnement', label: 'Abonnement & IA', icon: Sparkles, completed: true },
     { id: 'paiements', label: 'Paiements', icon: CreditCard, completed: !!checklist?.stripeConnected },
     { id: 'boutique', label: 'Boutique', icon: Store, completed: !!checklist?.commerceEnabled },
     { id: 'shipping', label: 'Contact & expédition', icon: Truck, completed: !!checklist?.shippingSet && !!checklist?.contactEmailSet },
@@ -280,6 +286,68 @@ export default async function SettingsPage() {
               totalCount={totalSteps}
             />
           )}
+
+          <section
+            id="abonnement"
+            data-settings-section="abonnement"
+            className="scroll-mt-24 rounded-xl border border-white/10 bg-gradient-to-br from-indigo-900/20 to-purple-900/20 p-6 backdrop-blur-sm transition data-[flash=true]:ring-2 data-[flash=true]:ring-white/20"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <h2 className="text-lg font-serif text-white flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-indigo-400" />
+                  Abonnement Hybride & Inspiration IA
+                </h2>
+                <p className="mt-1 text-sm text-white/60">
+                  Profitez de l'éditeur IA illimité (dans la limite de vos tokens mensuels) avec un abonnement fixe réduit + commission sur les ventes.
+                </p>
+              </div>
+              <span className="flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ring-1 bg-indigo-500/10 text-indigo-300 ring-indigo-500/20">
+                Abonnement Actif
+              </span>
+            </div>
+
+            <div className="mt-6 grid gap-4 lg:grid-cols-2">
+              <div className="rounded-xl border border-white/5 bg-black/20 p-5">
+                <div className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-1">Votre Forfait Actuel</div>
+                <div className="text-2xl font-serif text-white mb-2">Modèle Hybride</div>
+                <ul className="text-sm text-white/70 space-y-2 mb-4">
+                  <li>• Frais mensuels réduits (9.90€ / mois)</li>
+                  <li>• Commission de 10% sur les ventes d'œuvres</li>
+                  <li>• Limite mensuelle de génération IA réinitialisée le 1er de chaque mois</li>
+                </ul>
+                <button className="text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
+                  Gérer la facturation →
+                </button>
+              </div>
+
+              <div className="rounded-xl border border-indigo-500/20 bg-indigo-500/5 p-5 flex flex-col justify-between">
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-wider text-indigo-300/70 mb-1">Jauge d'Inspiration IA</div>
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span className="text-3xl font-serif text-indigo-100">{aiTokens.toLocaleString()}</span>
+                    <span className="text-sm text-indigo-300/70">tokens restants</span>
+                  </div>
+                  {/* Progress bar simulation */}
+                  <div className="h-2 w-full bg-black/40 rounded-full overflow-hidden mt-2 mb-3">
+                    <div className="h-full bg-indigo-500 rounded-full" style={{ width: `${Math.min(100, (aiTokens / 50000) * 100)}%` }} />
+                  </div>
+                  <p className="text-xs text-indigo-200/60">
+                    Les tokens sont utilisés pour générer des blocs et du contenu avec l'IA. {aiTokens < 1000 ? "⚠️ Vous êtes presque à court d'inspiration !" : "Vous avez de quoi être inspiré cette semaine."}
+                  </p>
+                </div>
+
+                <div className="mt-4 border-t border-indigo-500/20 pt-4">
+                  <button className="w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-900/20">
+                    ✨ Recharger mon inspiration
+                  </button>
+                  <p className="text-center text-[10px] text-indigo-300/50 mt-2">
+                    Pack additionnel : 50 000 tokens pour 4,90€
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
 
           <section
             id="paiements"

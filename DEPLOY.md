@@ -93,7 +93,7 @@ Déploiement Blue Cinis (Next.js + Prisma)
   - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_...
   - STRIPE_WEBHOOK_SECRET=whsec_...
   - (optionnel) LOCALE=fr
-  - (optionnel) DOMAIN=https://loire-gallery.com (pour success_url / cancel_url)
+  - (optionnel) DOMAIN=https://blue-cinis.com (pour success_url / cancel_url)
 
 7) Check-list DNS
 - Ajouter le domaine custom dans Vercel

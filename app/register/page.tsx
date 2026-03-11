@@ -11,7 +11,7 @@ type RegisterPageProps = {
 
 export async function generateMetadata() {
   return {
-    title: "Inscription | Loire Gallery",
+    title: "Inscription | Blue Cinis",
   }
 }
 

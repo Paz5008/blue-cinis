@@ -85,7 +85,6 @@ model User {
   artist                   Artist? // Relation one-to-one vers Artist
   createdAt                DateTime              @default(now())
   updatedAt                DateTime              @updatedAt
-  profileCustomization     ProfileCustomization?
   artistPages              ArtistPage[]
   mediaFiles               MediaLibrary[] // Files uploaded by this user
   Comment                  Comment[]
@@ -95,6 +94,8 @@ model User {
   AgentConversation        AgentConversation[]
   orders                   Order[]
   artAlerts                ArtAlert[] // Alertes personnalisées
+  aiTokens                 Int                   @default(50000)
+  aiTokensResetAt          DateTime?
 
   @@index([role])
 }
@@ -118,20 +119,6 @@ model MediaLibrary {
   @@index([userId])
 }
 
-model ProfileCustomization {
-  id               String    @id @default(uuid())
-  userId           String    @unique
-  // Ancien champ: contenu unique. Conservé pour rétrocompat (sera utilisé comme draft si présent)
-  content          Json? // Stocke la configuration du profil (legacy)
-  // Nouveau: séparation brouillon/publication
-  draftContent     Json?
-  publishedContent Json?
-  status           String? // 'draft' | 'published'
-  publishedAt      DateTime?
-  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
-}
 
 // Nouveau modèle: pages de personnalisation multiples par artiste/utilisateur
 // Permet d'éditer différentes pages (ex: "profile", "poster", "banner") avec brouillon/publication

@@ -1,6 +1,6 @@
 # CMS Architecture
 
-> Architecture complète du système CMS de Loire Gallery
+> Architecture complète du système CMS de Blue Cinis
 
 ## Vue d'Ensemble
 

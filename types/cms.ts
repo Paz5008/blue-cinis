@@ -14,7 +14,8 @@ export type BlockType =
   | 'artistPhoto'
   | 'artistBio'
   | 'contactForm'
-  | 'eventList';
+  | 'eventList'
+  | 'book';
 
 type BlockStyleValue = string | number | boolean | undefined | { desktop?: string | number; mobile?: string | number };
 
@@ -87,6 +88,10 @@ export interface BlockStyle {
   textAlign?: string;
   /** Animation type for scroll-triggered entrance */
   animation?: 'fadeIn' | 'slideUp' | 'scaleIn';
+  backdropFilter?: string;
+  mixBlendMode?: string;
+  filter?: string;
+  transform?: string;
   [customProp: string]: BlockStyleValue;
 }
 
@@ -444,7 +449,8 @@ export type Block =
   | ArtistPhotoBlock
   | ArtistBioBlock
   | ContactFormBlock
-  | EventListBlock;
+  | EventListBlock
+  | BookBlock;
 
 export interface PageContent {
   title: string;
@@ -614,4 +620,21 @@ export function isContactFormBlock(block: Block): block is ContactFormBlock {
 
 export function isEventListBlock(block: Block): block is EventListBlock {
   return block.type === 'eventList';
+}
+
+export interface BookItem {
+  id: string;
+  url: string;
+  title?: string;
+  description?: string;
+}
+
+export interface BookBlock extends BaseBlock {
+  type: 'book';
+  items: BookItem[];
+  bookStyle?: 'slider' | 'coverflow' | 'cards' | 'fade';
+}
+
+export function isBookBlock(block: Block): block is BookBlock {
+  return block.type === 'book';
 }

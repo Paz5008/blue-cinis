@@ -1,4 +1,4 @@
-# 🧠 Guide Stratégique: NotebookLM "Ultra" Prompts pour Loire Gallery V.1
+# 🧠 Guide Stratégique: NotebookLM "Ultra" Prompts pour Blue Cinis V.1
 
 Ce document contient des "Super-Prompts" conçus spécifiquement pour exploiter la fenêtre de contexte massive de NotebookLM (Gemini 1.5 Pro).
 **Prérequis :** Avoir uploadé le fichier `LOIRE_GALLERY_FULL_CONTEXT.txt` dans ta source NotebookLM.
@@ -11,7 +11,7 @@ Ce document contient des "Super-Prompts" conçus spécifiquement pour exploiter 
 ### 1. Le "Crash Test" CTO
 > **Prompt :**
 > "Agis en tant que CTO intransigeant auditant une startup avant rachat. Analyse l'intégralité du code fourni.
-> Je veux un rapport brutal et honnête sur l'état du projet 'Loire Gallery'.
+> Je veux un rapport brutal et honnête sur l'état du projet 'Blue Cinis'.
 >
 > Structure ta réponse ainsi :
 > 1. **Score de Crédibilité (0-100)** : Le code est-il professionnel ou amateur ?

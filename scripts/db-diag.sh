@@ -4,7 +4,7 @@
 set -u
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[0;33m'; NC='\033[0m'
 
-echo "# Loire Gallery - Docker Postgres diagnostics"
+echo "# Blue Cinis - Docker Postgres diagnostics"
 echo "# Host: $(uname -a)"
 
 # 1) Docker available?

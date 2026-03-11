@@ -13,7 +13,7 @@ export const DividerRenderer: React.FC<BlockRendererProps> = ({ block, style: in
             style={{
                 ...baseStyle,
                 ...injectedStyle,
-                borderColor: block.color || baseStyle?.borderColor || "rgba(148, 163, 184, 0.4)",
+                borderColor: block.color || baseStyle?.borderColor || "var(--border, currentColor)",
                 borderWidth: block.thickness ? `${block.thickness}px` : baseStyle?.borderWidth,
                 borderTopWidth: block.thickness ? `${block.thickness}px` : baseStyle?.borderWidth,
                 borderStyle: block.borderStyle || baseStyle?.borderStyle || "solid",

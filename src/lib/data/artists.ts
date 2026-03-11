@@ -486,7 +486,7 @@ const createFallbackArtists = (): FeaturedArtist[] => {
     },
     {
       id: "fallback-artist-3",
-      name: "Créateur·trice Loire",
+      name: "Créateur·trice Partenaire",
       heading: "Espace disponible",
       body: "Ajoutez une image, du texte et un appel à l’action pour compléter la bannière.",
       accent: "#7c3aed",

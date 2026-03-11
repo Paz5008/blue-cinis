@@ -1,0 +1,48 @@
+{
+    "name": "paz-collab",
+    "displayName": "Paz Collaboration",
+    "description": "Auto-trigger Paz AI on file save for Gemini-Paz collaboration",
+    "version": "1.0.0",
+    "engines": {
+        "vscode": "^1.85.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "paz.triggerHandoff",
+                "title": "Paz: Trigger Handoff"
+            },
+            {
+                "command": "paz.toggleAutoTrigger",
+                "title": "Paz: Toggle Auto-Trigger"
+            }
+        ],
+        "configuration": {
+            "title": "Paz Collaboration",
+            "properties": {
+                "paz.autoTrigger": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically trigger Paz on file save"
+                },
+                "paz.apiUrl": {
+                    "type": "string",
+                    "default": "http://localhost:3001/api/ai-bridge",
+                    "description": "Paz API endpoint"
+                },
+                "paz.handoffPath": {
+                    "type": "string",
+                    "default": ".ai/HANDOFF.md",
+                    "description": "Path to HANDOFF.md relative to workspace"
+                }
+            }
+        }
+    }
+}

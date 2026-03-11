@@ -155,6 +155,14 @@ const BLOCK_DEFAULTS: { [K in BlockType]: BlockDraft<Extract<Block, { type: K }>
         showOnDesktop: true,
         showOnMobile: true,
     },
+    book: {
+        type: 'book',
+        items: [],
+        bookStyle: 'slider',
+        style: { width: '100vw', height: '100vh', borderRadius: '0px' },
+        showOnDesktop: true,
+        showOnMobile: true,
+    },
 };
 
 /**
@@ -271,6 +279,14 @@ export function generatePlaceholder(type: BlockType): Partial<Block> {
                 showTitle: true,
                 showYear: true,
                 showPrice: true
+            };
+        case 'book':
+            return {
+                items: [
+                    { id: crypto.randomUUID(), url: 'https://placehold.co/1200x800/222/FFF', title: 'Chapter I', description: 'Une Nouvelle Ère.' },
+                    { id: crypto.randomUUID(), url: 'https://placehold.co/1200x800/444/FFF', title: 'Immersion', description: 'L\'art au centre de la toile.' }
+                ],
+                bookStyle: 'fade'
             };
         default:
             return {};

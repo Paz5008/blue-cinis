@@ -10,7 +10,7 @@ import CookieBanner from '@/components/shared/CookieBanner'
 import { I18nProvider } from '@/i18n/provider'
 import fr from '@/i18n/messages/fr.json'
 import en from '@/i18n/messages/en.json'
-import Preloader from "@/components/ui/Preloader";
+import Preloader from "@/components/shared/Preloader";
 import { ClientProviders } from "./ClientProviders";
 import NoiseOverlay from "@/components/ui/NoiseOverlay";
 import Navigation from "@/components/ui/Navigation"; // Import du menu
@@ -117,7 +117,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <I18nProvider locale={locale} messages={messages}>
           <ClientProviders session={session}>
             <Navigation />
-            {/* <Preloader /> */}
+            <Preloader />
             <NoiseOverlay />
             <CookieBanner />
             <ClientLayout

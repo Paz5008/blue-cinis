@@ -1,7 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import type { MetadataRoute } from 'next';
 
-import { ARTIST_SITEMAP_PAGE_SIZE, getSitemapBaseUrl } from '../lib/sitemap';
+import { ARTIST_SITEMAP_PAGE_SIZE, getSitemapBaseUrl } from '@/lib/sitemap';
 import { buildArtworkPath } from '@/lib/artworkSlug';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

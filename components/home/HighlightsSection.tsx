@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, AnimatePresence, m } from "framer-motion";
+import { useScroll, useTransform, AnimatePresence, m } from "framer-motion";
 
 const MANIFESTO_POINTS = [
     {
@@ -130,7 +130,7 @@ export default function HighlightsSection() {
                         </div>
                         <div className="hidden md:block">
                             <span className="font-mono text-xs text-white/40 tracking-widest uppercase">
-                                Loire Gallery<br />Est. 2024
+                                Blue Cinis<br />Est. 2024
                             </span>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, useSpring, useTransform, useMotionValue, useAnimationFrame, m } from "framer-motion";
+import { useSpring, useTransform, useMotionValue, useAnimationFrame, m } from "framer-motion";
 
 // Social icons as SVG components
 const InstagramIcon = () => (
@@ -131,7 +131,7 @@ export default function Footer() {
                 {/* Social Icons Row */}
                 <div className="flex gap-6 mb-12">
                     <a
-                        href="https://instagram.com/loiregallery"
+                        href="https://instagram.com/bluecinis"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
@@ -140,7 +140,7 @@ export default function Footer() {
                         <InstagramIcon />
                     </a>
                     <a
-                        href="https://linkedin.com/company/loiregallery"
+                        href="https://linkedin.com/company/bluecinis"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
@@ -149,7 +149,7 @@ export default function Footer() {
                         <LinkedInIcon />
                     </a>
                     <a
-                        href="https://x.com/loiregallery"
+                        href="https://x.com/bluecinis"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"

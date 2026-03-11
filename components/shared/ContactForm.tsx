@@ -57,7 +57,7 @@ export default function ContactForm({
 
     // VARIANT STYLES CONFIGURATION
     const getStyles = () => {
-        const baseInput = "w-full transition duration-200 focus:outline-none";
+        const baseInput = "input w-full transition duration-200";
 
         switch (variant) {
             case 'minimal':
@@ -65,7 +65,7 @@ export default function ContactForm({
                     container: "max-w-xl mx-auto",
                     input: `${baseInput} border-b-2 border-gray-200 bg-transparent py-3 px-0 focus:border-black rounded-none placeholder:text-gray-400`,
                     label: "block text-xs uppercase tracking-widest font-bold text-gray-500 mb-2",
-                    button: "w-full border-2 border-black bg-transparent text-black hover:bg-black hover:text-white uppercase tracking-widest text-xs py-4 font-bold transition-colors",
+                    button: "btn btn-outline w-full rounded-none tracking-widest text-xs py-4 font-bold",
                     error: "text-red-500 text-xs mt-1"
                 };
             case 'boxed':
@@ -73,7 +73,7 @@ export default function ContactForm({
                     container: "bg-white p-8 rounded-2xl shadow-xl border border-gray-100 max-w-xl mx-auto",
                     input: `${baseInput} px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500`,
                     label: "block text-sm font-semibold text-gray-700 mb-1.5",
-                    button: "w-full bg-blue-600 text-white rounded-lg py-3 font-semibold hover:bg-blue-700 shadow-lg shadow-blue-600/20 transition-all transform active:scale-[0.98]",
+                    button: "btn btn-primary w-full rounded-lg shadow-lg shadow-blue-600/20",
                     error: "text-red-500 text-xs mt-1 ml-1"
                 };
             case 'floating':
@@ -81,14 +81,14 @@ export default function ContactForm({
                     container: "max-w-xl mx-auto bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-white/20 shadow-sm", // Slight transparency
                     input: `${baseInput} px-4 pt-6 pb-2 rounded-lg border border-gray-300 bg-white/80 focus:ring-2 focus:ring-black/5 focus:border-black peer placeholder-transparent`,
                     label: "absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] left-4 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-black",
-                    button: "w-full bg-black text-white rounded-lg py-3.5 font-medium hover:opacity-90 transition-opacity",
+                    button: "btn w-full bg-black text-white hover:bg-gray-800 rounded-lg",
                     error: "text-red-500 text-xs mt-1 pl-4"
                 };
             case 'default':
             default:
                 return {
                     container: "max-w-2xl mx-auto",
-                    input: `${baseInput} px-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-800 dark:border-slate-700 dark:text-white`,
+                    input: `${baseInput} input-bordered focus:input-primary bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-white`,
                     label: "block text-gray-700 font-medium mb-1 dark:text-gray-300",
                     button: "", // Uses standard CTA component style
                     error: "text-red-500 text-sm mt-1"

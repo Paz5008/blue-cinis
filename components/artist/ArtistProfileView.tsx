@@ -157,7 +157,7 @@ export default function ArtistProfileView({ artist, content, isPreview = false }
         name: artist.name,
         image: artist.photoUrl || undefined,
         description: artist.biography || undefined,
-        url: `${process.env.NEXTAUTH_URL || 'https://loire-gallery.com'}/artistes/${artist.slug || artist.id}`,
+        url: `${process.env.NEXTAUTH_URL || 'https://blue-cinis.com'}/artistes/${artist.slug || artist.id}`,
     };
 
     // Visual Effects Styles

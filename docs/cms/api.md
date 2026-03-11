@@ -1,6 +1,6 @@
 # CMS API Reference
 
-> Endpoints API pour le CMS Loire Gallery
+> Endpoints API pour le CMS Blue Cinis
 
 ## Base URL
 

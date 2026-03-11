@@ -51,7 +51,7 @@ function FloatingParticles() {
 // Skeleton preloader with shimmer
 function HeroSkeleton() {
     return (
-        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#030303]">
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#030303] pointer-events-none">
             {/* Shimmer overlay */}
             <div className="relative">
                 {/* Title skeleton */}
@@ -180,7 +180,6 @@ export default function CinematicOverlay() {
     const { scrollY } = useScroll();
     // Fade out between 0 and 80% of viewport height
     const heroOpacity = useTransform(scrollY, [0, viewportHeight * 0.8], [1, 0]);
-    const heroPointerEvents = useTransform(heroOpacity, (opacity) => opacity > 0.1 ? 'auto' : 'none');
 
     const containerVariants = {
         hidden: {},
@@ -226,10 +225,9 @@ export default function CinematicOverlay() {
 
             {/* Main Hero Content - Fades out on scroll */}
             <m.div
-                className="fixed inset-0 z-20 flex flex-col items-center justify-center select-none"
+                className="fixed inset-0 z-20 flex flex-col items-center justify-center select-none pointer-events-none"
                 style={{
                     opacity: heroOpacity,
-                    pointerEvents: heroPointerEvents as any
                 }}
             >
 

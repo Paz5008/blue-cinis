@@ -40,8 +40,8 @@ const ImageRendererBase: React.FC<BlockRendererProps> = ({ block, context, style
             <div style={innerStyle}>
                 <SmartImage
                     context={context}
-                    src={block.src || ""}
-                    alt={block.altText || ""}
+                    src={block.src || (block as any).imageUrl || (block as any).url || ""}
+                    alt={block.altText || (block as any).alt || ""}
                     className="w-full object-cover"
                     loading="lazy"
                 />

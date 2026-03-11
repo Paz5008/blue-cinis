@@ -19,7 +19,7 @@ interface SocialProofClientProps {
 const TESTIMONIALS = [
     {
         id: "1",
-        quote: "Loire Gallery helped me discover an artist whose work now hangs in my living room. The curation is impeccable.",
+        quote: "Blue Cinis helped me discover an artist whose work now hangs in my living room. The curation is impeccable.",
         author: "Marie-Claire D.",
         role: "Collector, Paris",
         avatar: "/uploads/artwork-portrait-01.png",
@@ -204,7 +204,7 @@ export default function SocialProofClient({ stats }: SocialProofClientProps) {
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
                     >
-                        Collectors and artists from around the world trust Loire Gallery
+                        Collectors and artists from around the world trust Blue Cinis
                     </m.p>
                 </div>
 

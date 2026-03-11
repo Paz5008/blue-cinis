@@ -25,7 +25,7 @@ function formatCurrency(amountCents: number, currency?: string) {
 
 export default async function DashboardArtistPage() {
   const session = await auth();
-  if (!session || (session.user as any).role !== 'artist') {
+  if (!session?.user?.role || session.user.role !== 'artist') {
     redirect('/auth/signin');
   }
 
@@ -85,10 +85,12 @@ export default async function DashboardArtistPage() {
   const ninetyDaysAgo = new Date();
   ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - 90);
 
-  const [ordersLast90Days, pendingShipments, leadsTotal, recentLeads] = await Promise.all([
-    prisma.order.findMany({
-      where: { artistId: artist.id, createdAt: { gte: ninetyDaysAgo } },
-      select: { amount: true, net: true, status: true, currency: true },
+  // Use Prisma aggregate for performance (DB-side calculation instead of JS)
+  const [orderAggregates, pendingShipments, leadsTotal, recentLeads] = await Promise.all([
+    prisma.order.aggregate({
+      where: { artistId: artist.id, createdAt: { gte: ninetyDaysAgo }, status: 'paid' },
+      _sum: { amount: true, net: true },
+      _count: { id: true },
     }),
     prisma.order.count({
       where: {
@@ -113,10 +115,10 @@ export default async function DashboardArtistPage() {
     }),
   ]);
 
-  const paidOrders = ordersLast90Days.filter((order) => order.status === 'paid');
-  const grossVolume = paidOrders.reduce((sum, order) => sum + (order.amount || 0), 0);
-  const netVolume = paidOrders.reduce((sum, order) => sum + (order.net || 0), 0);
-  const currency = paidOrders.find((order) => !!order.currency)?.currency || 'eur';
+  // DB-aggregated values (no more JS .reduce on potentially thousands of orders)
+  const grossVolume = orderAggregates._sum.amount || 0;
+  const netVolume = orderAggregates._sum.net || 0;
+  const paidOrdersCount = orderAggregates._count.id;
   const totalAvailableArtworks = (artist.artworks || []).filter((artwork) => artwork.status === 'available').length;
 
   const actionItems: DashboardAction[] = [];
@@ -157,9 +159,9 @@ export default async function DashboardArtistPage() {
   }
 
   const metrics = [
-    { label: "Ventes (90 jours)", value: formatCurrency(grossVolume, currency) },
-    { label: "Revenus nets estimés", value: formatCurrency(netVolume, currency) },
-    { label: "Commandes payées", value: String(paidOrders.length) },
+    { label: "Ventes (90 jours)", value: formatCurrency(grossVolume, 'EUR') },
+    { label: "Revenus nets estimés", value: formatCurrency(netVolume, 'EUR') },
+    { label: "Commandes payées", value: String(paidOrdersCount) },
     { label: "Commandes à expédier", value: String(pendingShipments) },
     { label: "Leads cumulés", value: String(leadsTotal) },
     { label: "Œuvres disponibles", value: String(totalAvailableArtworks) },

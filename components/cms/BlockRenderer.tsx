@@ -26,6 +26,7 @@ import { EmbedRenderer } from './renderers/EmbedRenderer';
 import { ColumnsRenderer } from './renderers/ColumnsRenderer';
 import { OeuvreRenderer } from './renderers/OeuvreRenderer';
 import { EventListRenderer } from './renderers/EventListRenderer';
+import { BookRenderer } from './renderers/BookRenderer';
 
 interface BlockRendererProps {
     blocks: Block[];
@@ -49,7 +50,7 @@ export default function BlockRenderer({
     // We intentionally create a minimal context for the public view
     const context: RenderContext = useMemo(() => ({
         artist: artist,
-        artworks: artworks, // Some renderers might expect this in artist object or directly
+        artworks: artworks, // Accessible directement pour OeuvreRenderer et autres
         sanitize: (html: string) => sanitizeTextHtml(html, pageKey),
         searchString: '',
         isPreview: false,
@@ -103,6 +104,7 @@ const RENDERER_MAP: Record<string, React.FC<any>> = {
     embed: EmbedRenderer,
     columns: ColumnsRenderer,
     eventList: EventListRenderer,
+    book: BookRenderer,
 };
 
 import { buildHoverCSS, buildResponsiveCSS, buildVisibilityCSS } from '@/lib/cms/css-generator';

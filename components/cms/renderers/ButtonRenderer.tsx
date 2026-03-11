@@ -25,7 +25,7 @@ export const ButtonRenderer: React.FC<BlockRendererProps> = ({ block, context, s
         alignItems: "center",
         justifyContent: "center",
     };
-    const className = `artist-button ${block.variant || "primary"}`;
+    const className = `btn ${block.variant === 'secondary' ? 'btn-secondary' : block.variant === 'outline' ? 'btn-outline' : block.variant === 'ghost' ? 'btn-ghost' : 'btn-primary'} ${block.size === 'small' ? 'btn-sm' : block.size === 'large' ? 'btn-lg' : ''}`;
 
     // Use pre-computed token from context if available (server-side signed)
     const bannerCtaToken = (context as { bannerCtaToken?: string }).bannerCtaToken;

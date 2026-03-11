@@ -60,6 +60,7 @@ type Filters = {
 type Props = {
   data: LeadsResponse;
   filters: Filters;
+  initialExportJobs: AdminExportJobDTO[];
 };
 
 type LeadDetailPayload = {
@@ -67,7 +68,7 @@ type LeadDetailPayload = {
   timeline: WorkflowActivityDTO[];
 };
 
-export default function LeadsClient({ data, filters }: Props) {
+export default function LeadsClient({ data, filters, initialExportJobs }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const { addToast } = useToast();
@@ -80,7 +81,7 @@ export default function LeadsClient({ data, filters }: Props) {
   }));
   const [formState, setFormState] = useState(filters);
   const [isPending, startTransition] = useTransition();
-  const [exportJobs, setExportJobs] = useState<AdminExportJobDTO[]>([]);
+  const [exportJobs, setExportJobs] = useState<AdminExportJobDTO[]>(initialExportJobs);
   const [exportLoading, setExportLoading] = useState(false);
   const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null);
   const [panelData, setPanelData] = useState<LeadDetailPayload | null>(null);
@@ -104,10 +105,6 @@ export default function LeadsClient({ data, filters }: Props) {
       sensitiveMode: data.sensitiveMode,
     });
   }, [data]);
-
-  useEffect(() => {
-    refreshExportJobs();
-  }, []);
 
   useEffect(() => {
     if (formState.showSensitive && mfaToken) {

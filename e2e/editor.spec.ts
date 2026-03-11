@@ -12,11 +12,11 @@ test.describe('Editor UX sandbox', () => {
     const res = await page.goto('/e2e/editor-sandbox')
     expect(res?.ok()).toBeTruthy()
     // Editor header visible
-    await expect(page.getByRole('heading', { name: /Éditeur CMS/i })).toBeVisible()
+    await expect(page.getByRole('heading', { name: /Sandbox Éditeur/i })).toBeVisible()
 
     // Add a text block from the palette
     await page.getByTestId('palette-item-text').click()
-    await expect(page.getByText('Nouvel texte').first()).toBeVisible()
+    await expect(page.getByText('Nouveau texte').first()).toBeVisible()
 
     // Add an image block to trigger ALT guard later
     await page.getByTestId('palette-item-image').click()

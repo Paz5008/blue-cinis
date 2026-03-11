@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 import { prisma } from '@/lib/prisma';
-import { ARTIST_SITEMAP_PAGE_SIZE, getSitemapBaseUrl } from '../../../../lib/sitemap';
+import { ARTIST_SITEMAP_PAGE_SIZE, getSitemapBaseUrl } from '@/lib/sitemap';
 
 export const revalidate = 3600;
 

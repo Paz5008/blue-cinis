@@ -20,6 +20,7 @@ const BLOCK_TYPE_LABELS: Record<BlockType, string> = {
     artistBio: 'Biographie',
     contactForm: 'Formulaire',
     eventList: 'Événements',
+    book: 'Livre / Book',
 };
 
 interface PreviewModeOverlayProps {

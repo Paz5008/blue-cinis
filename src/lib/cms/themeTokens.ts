@@ -88,8 +88,8 @@ export interface ThemeTokens {
 
 export const PALETTE_PRESETS: PalettePreset[] = [
   {
-    id: 'loire-editorial',
-    name: 'Loire Editorial',
+    id: 'cinis-editorial',
+    name: 'Cinis Editorial',
     description: 'Bleus profonds et or patiné pour une ambiance magazine premium.',
     tone: 'dark',
     colors: {
@@ -179,6 +179,29 @@ export const PALETTE_PRESETS: PalettePreset[] = [
       overlay: 'rgba(15,23,42,0.35)',
     },
   },
+  {
+    id: 'tech-startup',
+    name: 'Tech & Startup',
+    description: 'Style moderne et dynamique pour startups, SaaS et entreprises tech.',
+    tone: 'dark',
+    colors: {
+      primary: '#6366f1',
+      secondary: '#4f46e5',
+      background: '#0a0a0f',
+      surface: '#1a1a2e',
+      surfaceAlt: '#23233e',
+      text: '#f8fafc',
+      textMuted: '#94a3b8',
+      accent: '#22d3ee',
+      accentAlt: '#38bdf8',
+      border: 'rgba(99,102,241,0.25)',
+    },
+    gradients: {
+      hero: 'linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #4f46e5 100%)',
+      accent: 'linear-gradient(120deg, #6366f1 0%, #22d3ee 100%)',
+      overlay: 'rgba(10,10,15,0.65)',
+    },
+  },
 ];
 
 export const TYPOGRAPHY_PRESETS: TypographyPreset[] = [
@@ -248,6 +271,23 @@ export const TYPOGRAPHY_PRESETS: TypographyPreset[] = [
       body: { fontSize: '0.98rem', lineHeight: '1.7' },
       caption: { fontSize: '0.76rem', lineHeight: '1.3', letterSpacing: '0.14em' },
       button: { fontSize: '0.92rem', letterSpacing: '0.18em', fontWeight: '700' },
+    },
+  },
+  {
+    id: 'tech-grotesk',
+    name: 'Tech Grotesk',
+    description: 'Minimalisme technologique et efficacité digitale.',
+    headingFont: `'Space Grotesk', 'Helvetica Neue', sans-serif`,
+    bodyFont: `'Inter', system-ui, sans-serif`,
+    ramps: {
+      h1: { fontSize: '3.2rem', lineHeight: '1.1', letterSpacing: '-0.05em', fontWeight: '700' },
+      h2: { fontSize: '2.4rem', lineHeight: '1.15', letterSpacing: '-0.03em', fontWeight: '600' },
+      h3: { fontSize: '1.6rem', lineHeight: '1.25', letterSpacing: '-0.02em', fontWeight: '600' },
+      kicker: { fontSize: '0.85rem', letterSpacing: '0.25em', fontWeight: '600', textTransform: 'uppercase' },
+      lead: { fontSize: '1.25rem', lineHeight: '1.6' },
+      body: { fontSize: '1rem', lineHeight: '1.7' },
+      caption: { fontSize: '0.875rem', lineHeight: '1.4', letterSpacing: '0.02em' },
+      button: { fontSize: '1rem', letterSpacing: '0.05em', fontWeight: '600' },
     },
   },
 ];
@@ -336,7 +376,7 @@ export const THEME_STYLE_PRESETS: ThemeStylePreset[] = [
     name: 'Éditorial Galerie',
     description: 'Look magazine haut de gamme, idéal pour profils narratifs.',
     badge: 'Nouveau',
-    colorPresetId: 'loire-editorial',
+    colorPresetId: 'cinis-editorial',
     typographyPresetId: 'editorial-elegance',
     spacingPresetId: 'balanced',
     surfaceStyleId: 'rounded',
@@ -372,6 +412,17 @@ export const THEME_STYLE_PRESETS: ThemeStylePreset[] = [
     spacingPresetId: 'compact',
     surfaceStyleId: 'sharp',
     recommendedTone: 'contrast',
+  },
+  {
+    id: 'tech-startup',
+    name: 'Tech & Startup',
+    description: 'Immersion technologique, parfait pour l\'innovation.',
+    badge: 'Nouveau',
+    colorPresetId: 'tech-startup',
+    typographyPresetId: 'tech-grotesk',
+    spacingPresetId: 'airy',
+    surfaceStyleId: 'soft',
+    recommendedTone: 'dark',
   },
 ];
 

@@ -23,7 +23,7 @@ export function PreviewFrame({ blocks, width, height, artist, artworks, enableAb
 
     return (
         <div
-            className="relative bg-white mx-auto shadow-2xl ring-1 ring-black/5 overflow-hidden"
+            className="relative bg-white mx-auto shadow-2xl ring-1 ring-black/5"
             style={{
                 width: width || '100%',
                 minHeight: finalMinHeight,

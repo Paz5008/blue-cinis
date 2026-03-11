@@ -24,6 +24,8 @@ export type ArtistCanvasPageKey = "banner" | "poster" | "profile";
 
 export type RenderContext = {
     artist: ArtistContext;
+    /** Liste complète des artworks disponibles pour ce contexte (éditeur ou page publique) */
+    artworks?: Artwork[];
     sanitize: (html: string) => string;
     searchString: string;
     isPreview: boolean;

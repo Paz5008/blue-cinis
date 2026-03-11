@@ -1,7 +1,7 @@
 # CMS Blocks & Inspectors
 
 ## Overview
-This document references all available CMS blocks and their corresponding inspectors in the Loire Gallery dashboard.
+This document references all available CMS blocks and their corresponding inspectors in the Blue Cinis dashboard.
 Inspectors are located in `components/dashboard/inspectors/` and are mapped in `components/dashboard/BlockInspector.tsx`.
 
 ## Block Registry

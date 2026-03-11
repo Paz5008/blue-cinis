@@ -7,6 +7,7 @@ import LeadsClient from './_components/LeadsClient'
 import { buildLeadQuery, resolveLeadFilters } from '@/lib/adminFilters'
 import type { LeadWorkflowStatus } from '@/lib/workflows'
 import { validateMfaToken } from '@/lib/mfa'
+import { serializeExportJob } from '@/lib/adminExports'
 
 type SearchParams = Record<string, string | string[] | undefined>
 
@@ -74,6 +75,14 @@ export default async function AdminLeadsPage({ searchParams }: { searchParams: S
     }
   })
 
+  // Fetch initial export jobs
+  const rawJobs = await prisma.adminExportJob.findMany({
+    where: { type: 'leads_csv' },
+    orderBy: { createdAt: 'desc' },
+    take: 6,
+  })
+  const initialExportJobs = rawJobs.map(serializeExportJob)
+
   await recordAdminAuditLog({
     action: 'leads.list',
     resource: `lead?page=${filters.page}`,
@@ -97,6 +106,7 @@ export default async function AdminLeadsPage({ searchParams }: { searchParams: S
         sort: filters.sort,
         showSensitive: includeSensitive,
       }}
+      initialExportJobs={initialExportJobs}
     />
   )
 }

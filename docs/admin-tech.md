@@ -1,4 +1,4 @@
-# Administration technique – exploitation Loire Gallery
+# Administration technique – exploitation Blue Cinis
 
 Dernière mise à jour : février 2025. Ce guide complète la console `/admin/tech` et documente les scripts disponibles, la cartographie des tags Next.js ainsi que les procédures de reprise pour les exports lourds.
 

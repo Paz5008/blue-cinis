@@ -20,8 +20,8 @@ export const VideoRenderer: React.FC<BlockRendererProps> = ({ block, context, st
     if (!block.src && (context.disablePositioning || !context.isPreview)) {
         return (
             <div
-                style={{ ...combinedStyle, height: '200px', backgroundColor: '#f3f4f6' }}
-                className="mb-4 flex items-center justify-center border-2 border-dashed border-gray-300 rounded"
+                style={{ ...combinedStyle, height: '200px' }}
+                className="mb-4 flex items-center justify-center border-2 border-dashed border-gray-300 bg-gray-50 rounded"
                 title="Vidéo vide"
             >
                 <div className="text-center text-slate-400">

@@ -4,7 +4,7 @@ import { Suspense, useState, useEffect } from "react";
 import { PerspectiveCamera, PerformanceMonitor, useKTX2 } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 // Post-processing imports kept for reference/future use but commented out if logically disabled
-import { EffectComposer, Noise, Vignette, Bloom } from "@react-three/postprocessing";
+import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
 import type { FeaturedArtwork } from "@/lib/data/artworks";
 import GalleryGroup from "./GalleryGroup";
@@ -90,8 +90,6 @@ export default function Scene({ items, totalDepth = 50, desktopLayout, mobileLay
                 {/* Post Processing */}
                 {!lowQuality && (
                     <EffectComposer>
-                        <Noise opacity={0.025} />
-                        <Vignette eskil={false} offset={0.1} darkness={1.1} />
                         <Bloom luminanceThreshold={1} intensity={0.5} levels={9} mipmapBlur />
                     </EffectComposer>
                 )}

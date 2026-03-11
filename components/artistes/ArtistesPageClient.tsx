@@ -59,7 +59,7 @@ export default function ArtistesPageClient({ artists, totalCount }: ArtistesPage
                             viewport={{ once: true }}
                         >
                             <span className="w-12 h-[1px] bg-blue-400" aria-hidden="true" />
-                            Communauté Loire
+                            Communauté Blue Cinis
                         </m.span>
 
                         <m.h1

@@ -15,8 +15,8 @@ export const EmbedRenderer: React.FC<BlockRendererProps> = ({ block, context, st
         if (!context.isPreview) {
             return (
                 <div
-                    style={{ ...baseStyle, height: '150px', backgroundColor: '#f9fafb' }}
-                    className="mb-6 flex items-center justify-center border-2 dashed border-gray-200 rounded-lg text-xs text-gray-400"
+                    style={{ ...baseStyle, height: '150px' }}
+                    className="mb-6 flex items-center justify-center border-2 border-dashed border-gray-200 bg-gray-50 rounded-lg text-xs text-gray-400"
                 >
                     Contenu intégré (Vide)
                 </div>

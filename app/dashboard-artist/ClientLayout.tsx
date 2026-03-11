@@ -50,15 +50,8 @@ export default function DashboardArtistClientLayout({ children, initialLeadCount
 
     const showSidebar = !pathname.startsWith('/dashboard-artist/customization');
 
-    useEffect(() => {
-        if (hasRedirected.current) return;
-        if (status === "loading") return;
-        const user = session?.user as UserWithRole | undefined;
-        if (!user || user.role !== "artist") {
-            hasRedirected.current = true;
-            router.push("/");
-        }
-    }, [session, status, router]);
+    // Note: Role validation is handled server-side in layout.tsx
+    // No need for client-side redirect check
 
     if (status === "loading") {
         return (
@@ -93,7 +86,7 @@ export default function DashboardArtistClientLayout({ children, initialLeadCount
             {showSidebar && (
                 <div className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between border-b border-[var(--dash-sidebar-border)] bg-[var(--dash-sidebar-bg)] p-4 backdrop-blur-md">
                     <div className="flex items-center gap-3">
-                        <h2 className="text-lg font-serif tracking-tight">Loire<span className="opacity-40">.Gallery</span></h2>
+                        <h2 className="text-lg font-serif tracking-tight">Blue <span className="opacity-40">Cinis</span></h2>
                     </div>
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -118,7 +111,7 @@ export default function DashboardArtistClientLayout({ children, initialLeadCount
                         } ${!showSidebar ? 'hidden' : ''}`}>
                         <div>
                             <div className="mb-10 px-2 hidden lg:block">
-                                <h2 className="text-xl font-serif tracking-tight">Loire<span className="opacity-40">.Gallery</span></h2>
+                                <h2 className="text-xl font-serif tracking-tight">Blue <span className="opacity-40">Cinis</span></h2>
                                 <p className="text-xs opacity-40 mt-1 uppercase tracking-widest">Espace Artiste</p>
                             </div>
                             {/* Mobile Logo inside Sidebar */}
@@ -190,7 +183,7 @@ export default function DashboardArtistClientLayout({ children, initialLeadCount
                 </>
             )}
 
-            <main className={`flex-1 transition-all duration-300 ${showSidebar ? 'pt-16 lg:pt-0 lg:pl-64' : ''}`}>
+            <main className={`flex-1 transition-all duration-300 ${showSidebar ? 'pt-16 lg:pt-0 lg:pl-64' : 'h-screen overflow-hidden'}`}>
                 <div className={`${showSidebar ? 'min-h-full p-4 lg:p-12 max-w-7xl mx-auto' : 'h-full w-full'}`}>
                     {children}
                 </div>

@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Fonctionnalités
 
-Loire Gallery offre une expérience complète pour les artistes et collectionneurs d'art.
+Blue Cinis offre une expérience complète pour les artistes et collectionneurs d'art.
 
 ### 🎨 CMS Block-Based
 

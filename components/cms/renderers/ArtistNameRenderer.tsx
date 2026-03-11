@@ -13,19 +13,21 @@ export const ArtistNameRenderer: React.FC<BlockRendererProps> = ({ block, contex
         <Tag
             className="break-words"
             style={{
-                textAlign: block.alignment,
-                color: block.color,
-                fontSize: block.fontSize,
-                lineHeight: block.lineHeight,
-                letterSpacing: block.letterSpacing,
-                fontWeight: block.fontWeight,
+                // Styles par défaut visibles si l'IA ne les fournit pas
+                fontSize: block.fontSize || '3rem',
+                fontWeight: block.fontWeight || '700',
+                textAlign: block.alignment || 'center',
+                letterSpacing: block.letterSpacing || '-0.02em',
+                lineHeight: block.lineHeight || '1.1',
+                padding: '40px 24px 16px',
+                color: block.color || 'inherit',
+                fontFamily: block.fontFamily || 'inherit',
                 textTransform: block.textTransform,
-                fontFamily: block.fontFamily,
                 ...baseStyle,
                 ...injectedStyle
             }}
         >
-            {artist.name}
+            {artist.name || 'Artiste'}
         </Tag>
     );
 };

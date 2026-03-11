@@ -135,7 +135,7 @@ export function ArtistCard({
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                     {/* Type badge */}
                     <span className="inline-block text-blue-400 text-xs font-mono tracking-widest uppercase mb-3">
-                        {artStyle || "Artiste Loire"}
+                        {artStyle || "Artiste Blue Cinis"}
                     </span>
 
                     {/* Name */}

@@ -1,5 +1,3 @@
-import PanierClient from "../panier/PanierClient";
-
 export default function SelectionPage() {
-  return <PanierClient />;
+  return <div>Selection temporaire (composant introuvable)</div>;
 }

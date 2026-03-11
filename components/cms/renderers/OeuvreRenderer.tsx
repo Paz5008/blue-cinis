@@ -11,12 +11,15 @@ export const OeuvreRenderer: React.FC<BlockRendererProps> = ({ block, context, s
     const baseStyle = composeBlockStyle(block.style || {});
 
     // 1. Data Selection
+    // Priorité : context.artworks (éditeur/PreviewFrame) puis artist.artworks (page publique)
+    const allArtworks: any[] = (context.artworks?.length ? context.artworks : null)
+        ?? (artist.artworks || []);
     const ids = Array.isArray(block.artworks) ? block.artworks : [];
     let artworks = ids.length
         ? ids
-            .map((id: string) => (artist.artworks || []).find((art: any) => art?.id === id))
+            .map((id: string) => allArtworks.find((art: any) => art?.id === id))
             .filter(Boolean)
-        : (artist.artworks || []);
+        : allArtworks;
 
     // Sorting (basic implementation)
     if (block.sortBy === 'title') {
@@ -83,7 +86,7 @@ export const OeuvreRenderer: React.FC<BlockRendererProps> = ({ block, context, s
         if (block.showTechnique !== false && art.technique) details.push(<span key="tech" className="block sm:inline sm:before:content-['•'] sm:before:mx-1">{art.technique}</span>);
 
         const priceElement = (block.showPrice !== false && art.price) ? (
-            <div className="mt-1 font-medium" style={{ color: block.descriptionColor || "#333" }}>{art.price} €</div>
+            <div className="mt-1 font-medium" style={{ color: block.descriptionColor || "inherit" }}>{art.price} €</div>
         ) : null;
 
         const statusElement = (block.showStatus !== false && (art.status === 'sold' || art.status === 'reserved')) ? (
@@ -97,25 +100,30 @@ export const OeuvreRenderer: React.FC<BlockRendererProps> = ({ block, context, s
 
         const cardContent = (
             <>
-                <div className={`relative ${isOverlay ? 'group overflow-hidden rounded-xl' : 'mb-3'}`}>
+                <div className={`relative ${isOverlay ? 'group overflow-hidden rounded-xl h-full w-full' : 'mb-3'}`}>
                     <SmartImage
                         context={context}
                         src={art.imageUrl || ""}
                         alt={art.title || ""}
-                        className={`w-full object-cover transition-transform duration-500 ${isOverlay ? 'group-hover:scale-110' : 'rounded-xl'}`}
+                        className={`w-full h-full object-cover transition-transform duration-500 ${isOverlay ? 'absolute inset-0 group-hover:scale-110' : 'rounded-xl'}`}
                         loading="lazy"
-                        style={{ aspectRatio: "1/1" }} // Default to square/consistent aspect if not set? Or auto.
+                        style={isOverlay ? undefined : { aspectRatio: "1/1" }}
                     />
                     {isOverlay && (
-                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                            <h3 className="text-white font-semibold text-lg">{art.title}</h3>
-                            <p className="text-white/80 text-sm">{art.year} {art.dimensions}</p>
-                        </div>
+                        <>
+                            {/* Always show a subtle gradient so text is readable, stronger on hover */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                            <div className="absolute inset-x-0 bottom-0 p-5 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 flex flex-col justify-end">
+                                <h3 className="text-white font-semibold text-lg md:text-xl drop-shadow-md">{art.title}</h3>
+                                <p className="text-white/90 text-sm font-medium mt-1 drop-shadow-md">{art.year} {art.dimensions}</p>
+                            </div>
+                        </>
                     )}
                 </div>
 
                 {!isOverlay && (
-                    <div className={isBoxed ? "p-4" : ""}>
+                    <div className={isBoxed ? "p-4 flex flex-col flex-1" : "flex flex-col flex-1"}>
                         {block.showTitle !== false && (
                             <div className="flex items-start justify-between">
                                 <h3
@@ -144,9 +152,9 @@ export const OeuvreRenderer: React.FC<BlockRendererProps> = ({ block, context, s
             <LinkComponent
                 key={art.id}
                 href={buildArtworkPath({ id: art.id, title: art.title })}
-                className={`block transition-opacity hover:opacity-90 ${isBoxed ? 'rounded-xl overflow-hidden' : ''}`}
-                style={isBoxed ? {
-                    backgroundColor: block.cardBackgroundColor || '#fff',
+                className={`block transition-opacity hover:opacity-90 ${isBoxed ? 'rounded-xl overflow-hidden' : ''} ${isOverlay ? 'aspect-square' : ''} flex flex-col h-full`}
+                style={isBoxed && !isOverlay ? {
+                    backgroundColor: block.cardBackgroundColor || 'var(--card-bg, transparent)',
                     padding: block.cardPadding,
                     borderRadius: block.cardBorderRadius
                 } : undefined}
